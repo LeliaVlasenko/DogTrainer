@@ -1,0 +1,379 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "onboarding.name.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "What's your dog's name?" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "¿Cómo se llama tu perro?" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Com es diu el teu gos?" } }
+      }
+    },
+    "onboarding.name.subtitle" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "This helps us personalize your training plan" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Esto nos ayuda a personalizar tu plan" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Això ens ajuda a personalitzar el teu pla" } }
+      }
+    },
+    "onboarding.name.label" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Dog's name" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Nombre del perro" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Nom del gos" } }
+      }
+    },
+    "onboarding.name.placeholder" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "e.g. Rocky" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "p. ej. Rocky" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "p. ex. Rocky" } }
+      }
+    },
+    "onboarding.name.preview" : {
+      "comment" : "%@ is replaced by the dog name",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Nice! %@ is a great name" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "¡Genial! %@ es un nombre estupendo" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Genial! %@ és un nom fantàstic" } }
+      }
+    },
+    "onboarding.breed.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "What breed is your dog?" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "¿De qué raza es tu perro?" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "De quina raça és el teu gos?" } }
+      }
+    },
+    "onboarding.breed.subtitle" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "We'll adapt training tips to the breed" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Adaptaremos los consejos a la raza" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Adaptarem els consells a la raça" } }
+      }
+    },
+    "onboarding.breed.label" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Breed" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Raza" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Raça" } }
+      }
+    },
+    "onboarding.breed.placeholder" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "e.g. Labrador" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "p. ej. Labrador" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "p. ex. Labrador" } }
+      }
+    },
+    "onboarding.breed.popular" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Popular breeds" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Razas populares" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Races populars" } }
+      }
+    },
+    "onboarding.breed.birthdate" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Birth date" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Fecha de nacimiento" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Data de naixement" } }
+      }
+    },
+    "onboarding.breed.birthdate.optional" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Select date (optional)" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Selecciona fecha (opcional)" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Selecciona data (opcional)" } }
+      }
+    },
+    "onboarding.level.title" : {
+      "comment" : "%@ is the dog name",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "What's %@'s experience?" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "¿Cuál es la experiencia de %@?" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Quina és l'experiència de %@?" } }
+      }
+    },
+    "onboarding.level.subtitle" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pick the option that fits best" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Elige la opción que mejor se adapte" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Tria l'opció que millor s'adapti" } }
+      }
+    },
+    "onboarding.level.tip" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "You can change this later in settings" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Podrás cambiarlo más tarde en ajustes" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Pots canviar-ho més tard a la configuració" } }
+      }
+    },
+    "onboarding.level.puppy.desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Under 1 year old, just starting out" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Menor de 1 año, recién empieza" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Menor d'1 any, tot just comença" } }
+      }
+    },
+    "onboarding.level.adult.desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Knows the basics, ready for more" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Conoce lo básico, listo para más" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Coneix el bàsic, llest per a més" } }
+      }
+    },
+    "onboarding.level.behavioral.desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Needs help with specific behavior issues" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Necesita ayuda con problemas de comportamiento" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Necessita ajuda amb problemes de comportament" } }
+      }
+    },
+    "level.puppy" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Puppy" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cachorro" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Cadell" } }
+      }
+    },
+    "level.adult" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Adult dog" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Perro adulto" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Gos adult" } }
+      }
+    },
+    "level.behavioral" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Behavior issues" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Problemas de comportamiento" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Problemes de comportament" } }
+      }
+    },
+    "onboarding.next" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Continue" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Continuar" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Continuar" } }
+      }
+    },
+    "onboarding.start" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Let's start!" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "¡Empezamos!" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Comencem!" } }
+      }
+    },
+    "onboarding.back" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Back" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Atrás" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Enrere" } }
+      }
+    },
+    "difficulty.beginner" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Beginner" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Principiante" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Principiant" } }
+      }
+    },
+    "difficulty.intermediate" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Intermediate" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Intermedio" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Intermedi" } }
+      }
+    },
+    "difficulty.advanced" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Advanced" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Avanzado" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Avançat" } }
+      }
+    },
+    "category.obedience" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Obedience" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Obediencia" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Obediència" } }
+      }
+    },
+    "category.social" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Socialization" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Socialización" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Socialització" } }
+      }
+    },
+    "category.tricks" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tricks" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Trucos" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Trucs" } }
+      }
+    },
+    "category.behavioral" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Behavior" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Comportamiento" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Comportament" } }
+      }
+    },
+    "command.sit.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sit" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sentado" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Seu" } }
+      }
+    },
+    "command.sit.desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "The most basic command — teach your dog to sit on cue" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "El comando más básico: enseña a tu perro a sentarse" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "L'ordre més bàsica: ensenya al teu gos a seure" } }
+      }
+    },
+    "command.sit.step1" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Hold a treat just above your dog's nose" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Sostén un premio justo encima de la nariz del perro" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Sosté un premi just damunt del nas del gos" } }
+      }
+    },
+    "command.sit.step2" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Slowly move it backward over their head" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Muévelo lentamente hacia atrás sobre la cabeza" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Mou-lo lentament cap enrere sobre el cap" } }
+      }
+    },
+    "command.sit.step3" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "When they sit, say 'Sit!' and reward immediately" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Cuando se siente, di '¡Sentado!' y recompensa al instante" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Quan segui, digues 'Seu!' i recompensa de seguida" } }
+      }
+    },
+    "command.stay.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Stay" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Quieto" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Quiet" } }
+      }
+    },
+    "command.stay.desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Teach your dog to stay in place until released" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Enseña a tu perro a quedarse quieto hasta que lo liberes" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Ensenya al teu gos a quedar-se quiet fins que l'alliberis" } }
+      }
+    },
+    "command.stay.step1" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ask your dog to sit first" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Pide primero al perro que se siente" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Demana primer al gos que segui" } }
+      }
+    },
+    "command.stay.step2" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open your palm and say 'Stay'" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Abre la palma y di 'Quieto'" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Obre el palmell i digues 'Quiet'" } }
+      }
+    },
+    "command.stay.step3" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Step back slowly, then return and reward" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Retrocede despacio, vuelve y recompensa" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Recula a poc a poc, torna i recompensa" } }
+      }
+    },
+    "command.come.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Come" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Ven" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Vine" } }
+      }
+    },
+    "command.come.desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Teach your dog to come when called" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Enseña a tu perro a venir cuando lo llames" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Ensenya al teu gos a venir quan el cridis" } }
+      }
+    },
+    "command.come.step1" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Crouch down and say their name + 'Come!'" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Agáchate y di su nombre + '¡Ven!'" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Ajup-te i digues el seu nom + 'Vine!'" } }
+      }
+    },
+    "command.come.step2" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reward enthusiastically when they reach you" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Recompensa con entusiasmo cuando llegue" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Recompensa amb entusiasme quan arribi" } }
+      }
+    },
+    "command.down.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Down" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Echado" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Ajagut" } }
+      }
+    },
+    "command.down.desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Teach your dog to lie down on cue" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Enseña a tu perro a echarse a la orden" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Ensenya al teu gos a ajeure's a l'ordre" } }
+      }
+    },
+    "command.leave.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Leave it" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Déjalo" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Deixa-ho" } }
+      }
+    },
+    "command.leave.desc" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Teach your dog to ignore something on cue" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Enseña a tu perro a ignorar algo a la orden" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Ensenya al teu gos a ignorar quelcom a l'ordre" } }
+      }
+    },
+    "mood.great" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Great" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Excelente" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Excel·lent" } }
+      }
+    },
+    "mood.good" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Good" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Bien" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "" } }
+      }
+    },
+    "mood.okay" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Okay" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Regular" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Regular" } }
+      }
+    },
+    "mood.bad" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Bad" } },
+        "es" : { "stringUnit" : { "state" : "translated", "value" : "Mal" } },
+        "ca" : { "stringUnit" : { "state" : "translated", "value" : "Malament" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}

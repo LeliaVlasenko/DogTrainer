@@ -1,0 +1,77 @@
+{
+  "identifier" : "DogTrainer",
+  "nonConsumableProducts" : [],
+  "consumableProducts" : [],
+  "autoRenewableSubscriptions" : [
+    {
+      "displayName" : "Dog Trainer Monthly",
+      "productID" : "com.yourapp.dogtrainer.monthly",
+      "referenceName" : "monthly",
+      "recurringSubscriptionPeriod" : "P1M",
+      "localizations" : [
+        {
+          "description" : "Full access to all training features",
+          "displayName" : "Monthly",
+          "locale" : "en_US",
+          "displayPrice" : "4.99",
+          "currencyCode" : "EUR"
+        },
+        {
+          "description" : "Acceso completo a todas las funciones de entrenamiento",
+          "displayName" : "Mensual",
+          "locale" : "es_ES",
+          "displayPrice" : "4.99",
+          "currencyCode" : "EUR"
+        }
+      ],
+      "introductoryOffer" : {
+        "offerIdentifier" : "monthly_trial",
+        "offerType" : "free_trial",
+        "periodCount" : 1,
+        "subscriptionPeriod" : "P14D",
+        "paymentMode" : "FREE_TRIAL"
+      },
+      "subscriptionGroupID" : "dog_trainer_premium"
+    },
+    {
+      "displayName" : "Dog Trainer Yearly",
+      "productID" : "com.yourapp.dogtrainer.yearly",
+      "referenceName" : "yearly",
+      "recurringSubscriptionPeriod" : "P1Y",
+      "localizations" : [
+        {
+          "description" : "Full access, billed annually",
+          "displayName" : "Yearly",
+          "locale" : "en_US",
+          "displayPrice" : "29.99",
+          "currencyCode" : "EUR"
+        },
+        {
+          "description" : "Acceso completo, facturación anual",
+          "displayName" : "Anual",
+          "locale" : "es_ES",
+          "displayPrice" : "29.99",
+          "currencyCode" : "EUR"
+        }
+      ],
+      "introductoryOffer" : {
+        "offerIdentifier" : "yearly_trial",
+        "offerType" : "free_trial",
+        "periodCount" : 1,
+        "subscriptionPeriod" : "P14D",
+        "paymentMode" : "FREE_TRIAL"
+      },
+      "subscriptionGroupID" : "dog_trainer_premium"
+    }
+  ],
+  "subscriptionGroups" : [
+    {
+      "id" : "dog_trainer_premium",
+      "name" : "Dog Trainer Premium"
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}
