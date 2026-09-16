@@ -6361,10 +6361,62 @@
       }
     },
     "paywall.redeem.subtitle" : {
-
+      "comment" : "A description of the benefits of redeeming a code.",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bescanvia'l per un mes gratis"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redeem it for a free month"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Canjéalo por un mes gratis"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отримай безкоштовний місяць"
+          }
+        }
+      }
     },
     "paywall.redeem.title" : {
-
+      "comment" : "The title of a redeem code button.",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tens un codi d'amic?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Have a friend code?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Tienes un código de un amigo?"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Є код від друга?"
+          }
+        }
+      }
     },
     "paywall.restore" : {
       "localizations" : {
