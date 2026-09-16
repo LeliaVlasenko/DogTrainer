@@ -54,6 +54,9 @@ final class SubscriptionManager {
     var products: [Product] = []
     var purchaseError: String? = nil
     var isPurchasing = false
+    /// Остання помилка при завантаженні продуктів з App Store.
+    /// Показується у debug-панелі коли продукти не приходять у TestFlight.
+    var productsFetchError: String? = nil
 
     /// Developer-bypass: розблоковує всі premium-фічі. Доступно тільки
     /// у DEBUG/DEVELOPER_MODE-білдах (див. DeveloperMode.isAvailable).
@@ -183,8 +186,10 @@ final class SubscriptionManager {
             products = fetched.sorted { lhs, rhs in
                 lhs.id == ProductID.monthly
             }
+            productsFetchError = nil
         } catch {
             print("⚠️ StoreKit: failed to fetch products: \(error)")
+            productsFetchError = String(describing: error)
         }
     }
 

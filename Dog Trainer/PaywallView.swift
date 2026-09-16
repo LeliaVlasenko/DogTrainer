@@ -97,6 +97,14 @@ struct PaywallView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 14))
                     }
 
+                    // Debug panel — показується коли продукти не завантажились
+                    // або у DEBUG-білдах. Допомагає діагностувати StoreKit-проблеми
+                    // напряму у TestFlight (де немає доступу до Xcode console).
+                    if subscriptionManager.products.isEmpty && !isLoadingProducts
+                        || DeveloperMode.isAvailable {
+                        StoreKitDebugPanel()
+                    }
+
                     // Error
                     if let error = subscriptionManager.purchaseError {
                         Text(error)
@@ -450,6 +458,116 @@ private struct TrialBadgeView: View {
         .padding(.vertical, 7)
         .background(Color.accentColor.opacity(0.1))
         .clipShape(Capsule())
+    }
+}
+
+// MARK: - StoreKit debug panel
+
+private struct StoreKitDebugPanel: View {
+    @Environment(SubscriptionManager.self) private var subscriptionManager
+    @State private var isExpanded = true
+
+    private var bundleID: String {
+        Bundle.main.bundleIdentifier ?? "—"
+    }
+
+    private var expectedProductIDs: [String] {
+        ProductID.all
+    }
+
+    private var loadedProductIDs: [String] {
+        subscriptionManager.products.map { $0.id }
+    }
+
+    private var missing: [String] {
+        expectedProductIDs.filter { !loadedProductIDs.contains($0) }
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Button {
+                withAnimation(.easeInOut(duration: 0.2)) { isExpanded.toggle() }
+            } label: {
+                HStack(spacing: 10) {
+                    Image(systemName: "wrench.and.screwdriver.fill")
+                        .foregroundStyle(Color.appFlame)
+                    Text("StoreKit debug")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(.primary)
+                    Spacer()
+                    Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
+                        .font(.system(size: 11, weight: .semibold))
+                        .foregroundStyle(.secondary)
+                }
+                .padding(14)
+            }
+            .buttonStyle(.plain)
+
+            if isExpanded {
+                VStack(alignment: .leading, spacing: 10) {
+                    Divider()
+                    row(label: "Bundle ID", value: bundleID)
+                    row(label: "Expected", value: expectedProductIDs.joined(separator: "\n"))
+                    row(label: "Loaded (\(loadedProductIDs.count))",
+                        value: loadedProductIDs.isEmpty ? "none" : loadedProductIDs.joined(separator: "\n"),
+                        valueColor: loadedProductIDs.isEmpty ? .appCoral : .primary)
+                    if !missing.isEmpty {
+                        row(label: "Missing",
+                            value: missing.joined(separator: "\n"),
+                            valueColor: .appCoral)
+                    }
+                    if let err = subscriptionManager.productsFetchError {
+                        row(label: "Fetch error", value: err, valueColor: .appCoral)
+                    }
+                    row(label: "Status", value: statusDescription)
+
+                    Text(hints)
+                        .font(.system(size: 11))
+                        .foregroundStyle(.secondary)
+                        .padding(.top, 4)
+                }
+                .padding(.horizontal, 14)
+                .padding(.bottom, 14)
+            }
+        }
+        .background(Color.appFlame.opacity(0.06))
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .strokeBorder(Color.appFlame.opacity(0.25), lineWidth: 1)
+        )
+    }
+
+    private func row(label: String, value: String, valueColor: Color = .primary) -> some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text(label)
+                .font(.system(size: 10, weight: .semibold))
+                .foregroundStyle(.secondary)
+                .textCase(.uppercase)
+            Text(value)
+                .font(.system(size: 11, design: .monospaced))
+                .foregroundStyle(valueColor)
+                .textSelection(.enabled)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+    }
+
+    private var statusDescription: String {
+        switch subscriptionManager.status {
+        case .loading:                return "loading"
+        case .notSubscribed:          return "notSubscribed"
+        case .trial(let d):           return "trial(\(d) days)"
+        case .active:                 return "active"
+        case .expired:                return "expired"
+        case .unknown:                return "unknown"
+        }
+    }
+
+    private var hints: String {
+        if !missing.isEmpty {
+            return "Продукти відсутні. Причини: Paid Apps Agreement не підписаний, підписки у Draft/Missing Metadata, або білд ще не пройшов першого рев'ю разом з підписками. Пропагація може займати до 24 год."
+        }
+        return "Все ок — продукти завантажились. Ця панель показується у DEBUG-білдах."
     }
 }
 
