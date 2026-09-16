@@ -242,9 +242,99 @@ body {
     opacity: 0.5;
 }
 
+/* Support-page extras */
+
+.quick-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 24px;
+    margin-bottom: 4px;
+}
+
+.nav-chip {
+    display: inline-block;
+    padding: 8px 14px;
+    background: var(--card);
+    color: var(--sage-dark);
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.15s ease;
+}
+
+.nav-chip:hover {
+    background: var(--nested);
+}
+
+.section ul, .section ol {
+    color: var(--text);
+    opacity: 0.88;
+    font-size: 14px;
+}
+
+.section strong {
+    color: var(--sage-dark);
+    font-weight: 600;
+}
+
+.section em {
+    font-style: normal;
+    background: var(--nested);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.contact-card {
+    text-align: center;
+}
+
+.contact-btn {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 12px 22px;
+    background: var(--sage);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.contact-btn:hover {
+    background: var(--sage-dark);
+    transform: translateY(-1px);
+}
+
+.legal-row {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.legal-row a {
+    color: var(--sage-dark);
+    text-decoration: none;
+    padding: 0 8px;
+}
+
+.legal-row a:hover {
+    text-decoration: underline;
+}
+
+.legal-row span {
+    opacity: 0.5;
+}
+
 @media (max-width: 480px) {
     body { padding: 24px 16px 60px; }
     .hero h1 { font-size: 24px; }
     .landing h1 { font-size: 28px; }
     .section { padding: 16px 18px; }
+    .nav-chip { padding: 7px 12px; font-size: 12px; }
 }
