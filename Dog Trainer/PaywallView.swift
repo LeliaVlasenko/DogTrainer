@@ -12,6 +12,7 @@ struct PaywallView: View {
     // Право саме цього юзера на trial (перевіряється через StoreKit,
     // враховує чи він вже використовував introductory offer раніше).
     @State private var trialEligible: Bool = false
+    @State private var presentedLegal: LegalDocument? = nil
 
     private var canPurchase: Bool {
         !subscriptionManager.isPurchasing && selectedProduct != nil
@@ -137,11 +138,13 @@ struct PaywallView: View {
                                 Task { await subscriptionManager.restore() }
                             }
                             Text("·")
-                            Link(String(localized: "paywall.privacy"),
-                                 destination: URL(string: "https://pupcademy.app/privacy")!)
+                            Button(String(localized: "paywall.privacy")) {
+                                presentedLegal = .privacy
+                            }
                             Text("·")
-                            Link(String(localized: "paywall.terms"),
-                                 destination: URL(string: "https://pupcademy.app/terms")!)
+                            Button(String(localized: "paywall.terms")) {
+                                presentedLegal = .terms
+                            }
                         }
                         .font(.system(size: 12))
                         .foregroundStyle(.secondary)
@@ -169,6 +172,9 @@ struct PaywallView: View {
             if showSuccess {
                 PurchaseSuccessOverlay { dismiss() }
             }
+        }
+        .sheet(item: $presentedLegal) { doc in
+            LegalView(document: doc)
         }
         .task {
             // Прибираємо стару помилку при кожному відкритті paywall.
