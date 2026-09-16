@@ -4,8 +4,8 @@ import SwiftUI
 // MARK: - Product IDs (мають збігатись з App Store Connect)
 
 enum ProductID {
-    static let monthly  = "com.lelia.Dog-Academy.monthly"
-    static let yearly   = "com.lelia.Dog-Academy.yearly"
+    static let monthly  = "com.lelia.Dog_Academy.monthly"
+    static let yearly   = "com.lelia.Dog_Academy.yearly"
 
     static var all: [String] { [monthly, yearly] }
 }

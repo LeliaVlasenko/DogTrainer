@@ -5,7 +5,7 @@
   "autoRenewableSubscriptions" : [
     {
       "displayName" : "Dog Academy Monthly",
-      "productID" : "com.lelia.Dog-Academy.monthly",
+      "productID" : "com.lelia.Dog_Academy.monthly",
       "referenceName" : "monthly",
       "recurringSubscriptionPeriod" : "P1M",
       "localizations" : [
@@ -35,7 +35,7 @@
     },
     {
       "displayName" : "Dog Academy Yearly",
-      "productID" : "com.lelia.Dog-Academy.yearly",
+      "productID" : "com.lelia.Dog_Academy.yearly",
       "referenceName" : "yearly",
       "recurringSubscriptionPeriod" : "P1Y",
       "localizations" : [
