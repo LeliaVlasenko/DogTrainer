@@ -13,6 +13,7 @@ struct PaywallView: View {
     // враховує чи він вже використовував introductory offer раніше).
     @State private var trialEligible: Bool = false
     @State private var presentedLegal: LegalDocument? = nil
+    @State private var showRedemption: Bool = false
 
     private var canPurchase: Bool {
         !subscriptionManager.isPurchasing && selectedProduct != nil
@@ -132,6 +133,11 @@ struct PaywallView: View {
                             TrialBadgeView()
                         }
 
+                        // Friend / promo code redemption
+                        RedeemCodeButton {
+                            showRedemption = true
+                        }
+
                         // Restore + legal
                         HStack(spacing: 16) {
                             Button(String(localized: "paywall.restore")) {
@@ -175,6 +181,23 @@ struct PaywallView: View {
         }
         .sheet(item: $presentedLegal) { doc in
             LegalView(document: doc)
+        }
+        .offerCodeRedemption(isPresented: $showRedemption) { result in
+            // Apple sheet сам валідує код. Ми лише оновлюємо статус —
+            // якщо код був валідний, Transaction.updates listener підхопить
+            // нову підписку і оновить UI.
+            switch result {
+            case .success:
+                Task {
+                    await subscriptionManager.refreshStatus()
+                    await refreshTrialEligibility()
+                    if subscriptionManager.isPremium {
+                        withAnimation { showSuccess = true }
+                    }
+                }
+            case .failure(let error):
+                subscriptionManager.purchaseError = error.localizedDescription
+            }
         }
         .task {
             // Прибираємо стару помилку при кожному відкритті paywall.
@@ -371,6 +394,42 @@ private struct ProductCard: View {
                     .strokeBorder(isSelected ? Color.accentColor : Color.clear, lineWidth: 2)
             )
             .animation(.easeInOut(duration: 0.15), value: isSelected)
+        }
+        .buttonStyle(.plain)
+    }
+}
+
+// MARK: - Redeem code button
+
+private struct RedeemCodeButton: View {
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 10) {
+                Image(systemName: "gift.fill")
+                    .font(.system(size: 14))
+                    .foregroundStyle(Color.appSage)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(String(localized: "paywall.redeem.title"))
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(.primary)
+                    Text(String(localized: "paywall.redeem.subtitle"))
+                        .font(.system(size: 11))
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 12, weight: .semibold))
+                    .foregroundStyle(.secondary)
+            }
+            .padding(14)
+            .background(Color.appSage.opacity(0.08))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .strokeBorder(Color.appSage.opacity(0.25), lineWidth: 1)
+            )
         }
         .buttonStyle(.plain)
     }
