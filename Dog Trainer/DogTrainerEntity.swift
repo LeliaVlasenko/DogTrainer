@@ -13,7 +13,7 @@ enum AppTab: String {
 // AppEntity дозволяє Siri/Shortcuts передавати структуровані дані в app
 
 struct DogTrainerEntity: AppEntity {
-    static let typeDisplayRepresentation: TypeDisplayRepresentation = "Pupcademy"
+    static let typeDisplayRepresentation: TypeDisplayRepresentation = "Dog Academy"
 
     static var defaultQuery = DogTrainerEntityQuery()
 
@@ -73,5 +73,5 @@ struct OpenIntent: AppIntent {
 // MARK: - Notification name
 
 extension Notification.Name {
-    static let openAppTab = Notification.Name("Pupcademy.openAppTab")
+    static let openAppTab = Notification.Name("DogAcademy.openAppTab")
 }

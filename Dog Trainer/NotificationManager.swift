@@ -5,8 +5,8 @@ import UserNotifications
 // MARK: - Notification IDs
 
 enum NotificationID {
-    static let dailyReminder  = "Pupcademy.dailyReminder"
-    static let streakAtRisk   = "Pupcademy.streakAtRisk"
+    static let dailyReminder  = "DogAcademy.dailyReminder"
+    static let streakAtRisk   = "DogAcademy.streakAtRisk"
 }
 
 // MARK: - Permission status

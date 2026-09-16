@@ -1,10 +1,10 @@
 {
-  "identifier" : "Pupcademy",
+  "identifier" : "Dog Academy",
   "nonConsumableProducts" : [],
   "consumableProducts" : [],
   "autoRenewableSubscriptions" : [
     {
-      "displayName" : "Pupcademy Monthly",
+      "displayName" : "Dog Academy Monthly",
       "productID" : "com.lelia.Dog-Academy.monthly",
       "referenceName" : "monthly",
       "recurringSubscriptionPeriod" : "P1M",
@@ -31,10 +31,10 @@
         "subscriptionPeriod" : "P14D",
         "paymentMode" : "FREE_TRIAL"
       },
-      "subscriptionGroupID" : "pupcademy_premium"
+      "subscriptionGroupID" : "dog_academy_premium"
     },
     {
-      "displayName" : "Pupcademy Yearly",
+      "displayName" : "Dog Academy Yearly",
       "productID" : "com.lelia.Dog-Academy.yearly",
       "referenceName" : "yearly",
       "recurringSubscriptionPeriod" : "P1Y",
@@ -61,13 +61,13 @@
         "subscriptionPeriod" : "P14D",
         "paymentMode" : "FREE_TRIAL"
       },
-      "subscriptionGroupID" : "pupcademy_premium"
+      "subscriptionGroupID" : "dog_academy_premium"
     }
   ],
   "subscriptionGroups" : [
     {
-      "id" : "pupcademy_premium",
-      "name" : "Pupcademy Premium"
+      "id" : "dog_academy_premium",
+      "name" : "Dog Academy Premium"
     }
   ],
   "version" : {

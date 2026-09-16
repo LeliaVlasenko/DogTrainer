@@ -24,7 +24,7 @@ struct AvatarGeneratorView: View {
         .text("cute friendly dog portrait illustration"),
         .text("flat 2D cartoon style, rounded shapes"),
         .text("warm beige background with sage green accents"),
-        .text("Pupcademy brand mascot style")
+        .text("Dog Academy brand mascot style")
     ]
 
     var body: some View {

@@ -1,6 +1,6 @@
 import SwiftUI
 
-// MARK: - Pupcademy palette
+// MARK: - Dog Academy palette
 // Warm beige + sage green + gold/orange/coral accents.
 // All colors picked from the brand reference illustration.
 

@@ -22,8 +22,8 @@ enum LegalDocument: Identifiable {
 
     var subtitle: String {
         switch self {
-        case .privacy: return "How Pupcademy handles your data"
-        case .terms:   return "Rules for using Pupcademy"
+        case .privacy: return "How Dog Academy handles your data"
+        case .terms:   return "Rules for using Dog Academy"
         }
     }
 
@@ -171,7 +171,7 @@ private struct FooterBlock: View {
             }
             .foregroundStyle(.secondary)
 
-            Text("Questions? Contact us at hello@pupcademy.app")
+            Text("Questions? Contact us at lelyakupina@gmail.com")
                 .font(.system(size: 12))
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
@@ -187,7 +187,7 @@ private enum LegalContent {
     static let privacy: [LegalSection] = [
         LegalSection(
             title: "1. Overview",
-            text: "Pupcademy is a personal dog training companion. We designed the app to work primarily on your device — your training data stays with you unless you explicitly choose otherwise. This document explains what we collect, why, and what we don't."
+            text: "Dog Academy is a personal dog training companion. We designed the app to work primarily on your device — your training data stays with you unless you explicitly choose otherwise. This document explains what we collect, why, and what we don't."
         ),
         LegalSection(
             title: "2. Data stored on your device",
@@ -199,7 +199,7 @@ private enum LegalContent {
         ),
         LegalSection(
             title: "4. Subscriptions and payments",
-            text: "Purchases are handled entirely by Apple through the App Store. Pupcademy receives only a receipt confirming your subscription status — never your payment details. Refer to Apple's privacy policy for how they handle transactions."
+            text: "Purchases are handled entirely by Apple through the App Store. Dog Academy receives only a receipt confirming your subscription status — never your payment details. Refer to Apple's privacy policy for how they handle transactions."
         ),
         LegalSection(
             title: "5. Photos and Image Playground",
@@ -215,7 +215,7 @@ private enum LegalContent {
         ),
         LegalSection(
             title: "8. Children's privacy",
-            text: "Pupcademy is intended for adult dog owners. We do not knowingly collect information from children under 13."
+            text: "Dog Academy is intended for adult dog owners. We do not knowingly collect information from children under 13."
         ),
         LegalSection(
             title: "9. Data deletion",
@@ -230,11 +230,11 @@ private enum LegalContent {
     static let terms: [LegalSection] = [
         LegalSection(
             title: "1. Acceptance",
-            text: "By downloading and using Pupcademy, you agree to these terms. If you do not agree, please stop using the app and delete it from your device."
+            text: "By downloading and using Dog Academy, you agree to these terms. If you do not agree, please stop using the app and delete it from your device."
         ),
         LegalSection(
-            title: "2. What Pupcademy provides",
-            text: "Pupcademy offers dog training exercises, progress tracking, streaks, badges, and a library of commands. The app is a supportive tool — not a substitute for professional veterinary advice or certified dog behaviorists."
+            title: "2. What Dog Academy provides",
+            text: "Dog Academy offers dog training exercises, progress tracking, streaks, badges, and a library of commands. The app is a supportive tool — not a substitute for professional veterinary advice or certified dog behaviorists."
         ),
         LegalSection(
             title: "3. Subscriptions",
@@ -250,7 +250,7 @@ private enum LegalContent {
         ),
         LegalSection(
             title: "6. Refunds",
-            text: "All refunds are handled by Apple according to App Store policies. Pupcademy cannot issue refunds directly. Requests can be submitted at reportaproblem.apple.com."
+            text: "All refunds are handled by Apple according to App Store policies. Dog Academy cannot issue refunds directly. Requests can be submitted at reportaproblem.apple.com."
         ),
         LegalSection(
             title: "7. Acceptable use",
@@ -258,7 +258,7 @@ private enum LegalContent {
         ),
         LegalSection(
             title: "8. Content and intellectual property",
-            text: "All illustrations, text, and code in Pupcademy are owned by us or licensed to us. You receive a personal, non-transferable license to use the app on devices you own or control."
+            text: "All illustrations, text, and code in Dog Academy are owned by us or licensed to us. You receive a personal, non-transferable license to use the app on devices you own or control."
         ),
         LegalSection(
             title: "9. Disclaimer",
@@ -266,7 +266,7 @@ private enum LegalContent {
         ),
         LegalSection(
             title: "10. Limitation of liability",
-            text: "To the maximum extent permitted by law, Pupcademy is not liable for indirect or consequential damages arising from your use of the app, including any harm to pets, property, or relationships."
+            text: "To the maximum extent permitted by law, Dog Academy is not liable for indirect or consequential damages arising from your use of the app, including any harm to pets, property, or relationships."
         ),
         LegalSection(
             title: "11. Changes to these terms",
@@ -274,7 +274,7 @@ private enum LegalContent {
         ),
         LegalSection(
             title: "12. Contact",
-            text: "For questions about these terms, reach out at hello@pupcademy.app."
+            text: "For questions about these terms, reach out at lelyakupina@gmail.com."
         )
     ]
 }

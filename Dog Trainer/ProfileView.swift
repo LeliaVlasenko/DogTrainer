@@ -375,7 +375,7 @@ private struct AppInfoSection: View {
                     trailing: version
                 )
                 Divider().padding(.vertical, 10)
-                Link(destination: URL(string: "https://pupcademy.app/privacy")!) {
+                Link(destination: URL(string: "https://leliavlasenko.github.io/DogTrainer/privacy.html")!) {
                     InfoRow(
                         icon: "hand.raised",
                         title: String(localized: "profile.info.privacy"),
@@ -383,7 +383,7 @@ private struct AppInfoSection: View {
                     )
                 }
                 Divider().padding(.vertical, 10)
-                Link(destination: URL(string: "https://pupcademy.app/terms")!) {
+                Link(destination: URL(string: "https://leliavlasenko.github.io/DogTrainer/terms.html")!) {
                     InfoRow(
                         icon: "doc.text",
                         title: String(localized: "profile.info.terms"),
