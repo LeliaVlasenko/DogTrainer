@@ -3,11 +3,15 @@ import SwiftData
 
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(NotificationManager.self) private var notificationManager
+    @Environment(AchievementManager.self) private var achievementManager
     @Query private var dogs: [Dog]
     @Query private var commands: [Command]
+    @Query private var earnedBadges: [EarnedBadge]
 
     @State private var todayCommands: [Command] = []
     @State private var showTraining = false
+    @State private var showAllBadges = false
 
     private var dog: Dog? { dogs.first }
 
@@ -17,6 +21,7 @@ struct HomeView: View {
                 VStack(spacing: 24) {
                     if let dog {
                         DogHeaderView(dog: dog)
+                        StreakMilestoneView(streak: dog.currentStreak)
                         TodayPlanView(
                             commands: todayCommands,
                             trainedToday: dog.trainedToday
@@ -26,6 +31,9 @@ struct HomeView: View {
                             commandsReady: !todayCommands.isEmpty
                         ) {
                             showTraining = true
+                        }
+                        RecentBadgesRow(earned: earnedBadges) {
+                            showAllBadges = true
                         }
                     } else {
                         // Edge case: немає собаки (не мало б статись)
@@ -40,13 +48,12 @@ struct HomeView: View {
                 .padding(.top, 8)
                 .padding(.bottom, 32)
             }
-            .background(Color(.systemGroupedBackground))
+            .background(Color.appBackground)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {
-                        // TODO: DogProfileView (наступний таск)
-                        Text("Profile")
+                        ProfileView()
                     } label: {
                         Image(systemName: "person.circle")
                             .foregroundStyle(.primary)
@@ -54,8 +61,14 @@ struct HomeView: View {
                 }
             }
             .fullScreenCover(isPresented: $showTraining) {
-                // TODO: TrainingSessionView (DOG-005)
-                Text("Training!")
+                if let dog {
+                    TrainingSessionView(dog: dog, commands: todayCommands)
+                        .environment(notificationManager)
+                        .environment(achievementManager)
+                }
+            }
+            .navigationDestination(isPresented: $showAllBadges) {
+                AllBadgesView()
             }
         }
         .onAppear { refreshTodayCommands() }

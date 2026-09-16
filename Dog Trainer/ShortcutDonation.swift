@@ -12,7 +12,7 @@ func donateTrainingShortcut(dogName: String) {
     // iOS 17+ donation через AppShortcutsProvider автоматична,
     // але явний donate дає Siri більше сигналів про частоту
     Task {
-        await AppShortcutsProvider.updateAppShortcutParameters()
+        DogTrainerShortcuts.updateAppShortcutParameters()
     }
 }
 
@@ -21,6 +21,6 @@ func donateTrainingShortcut(dogName: String) {
 @MainActor
 func donateProgressShortcut() {
     Task {
-        await AppShortcutsProvider.updateAppShortcutParameters()
+        DogTrainerShortcuts.updateAppShortcutParameters()
     }
 }

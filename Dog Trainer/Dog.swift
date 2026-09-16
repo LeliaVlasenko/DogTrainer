@@ -9,6 +9,10 @@ final class Dog {
     var level: DogLevel
     var createdAt: Date
 
+    /// Кастомний аватар, згенерований через Image Playground з фото собаки.
+    /// `nil` → показуємо стандартну BrandIcon для рівня.
+    var avatarData: Data?
+
     @Relationship(deleteRule: .cascade, inverse: \TrainingSession.dog)
     var sessions: [TrainingSession]
 
@@ -75,6 +79,14 @@ enum DogLevel: String, Codable, CaseIterable {
         case .puppy:      return "🐶"
         case .adult:      return "🐕"
         case .behavioral: return "🦮"
+        }
+    }
+
+    var iconName: BrandIconName {
+        switch self {
+        case .puppy:      return .dogPuppy
+        case .adult:      return .dogAdult
+        case .behavioral: return .dogGuide
         }
     }
 }

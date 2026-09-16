@@ -1,3 +1,4 @@
+import Combine
 import SwiftUI
 
 struct LessonView: View {
@@ -59,7 +60,7 @@ struct LessonView: View {
                 onFinish(false)
             })
         }
-        .background(Color(.systemGroupedBackground))
+        .background(Color.appBackground)
         .navigationBarBackButtonHidden()
         .onDisappear { timerRunning = false }
     }
@@ -91,7 +92,7 @@ private struct ProgressBar: View {
             .padding(.horizontal, 20)
         }
         .padding(.vertical, 12)
-        .background(Color(.systemGroupedBackground))
+        .background(Color.appBackground)
     }
 }
 
@@ -120,7 +121,7 @@ private struct CommandHeaderSection: View {
         }
         .frame(maxWidth: .infinity)
         .padding(20)
-        .background(Color(.secondarySystemGroupedBackground))
+        .background(Color.appCardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 18))
     }
 }
@@ -182,12 +183,12 @@ private struct StepsSection: View {
                     .disabled(currentStep == steps.count - 1)
                 }
                 .font(.system(size: 14))
-                .foregroundStyle(.accentColor)
+                .foregroundStyle(Color.accentColor)
                 .padding(.top, 4)
             }
         }
         .padding(16)
-        .background(Color(.secondarySystemGroupedBackground))
+        .background(Color.appCardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 18))
     }
 
@@ -242,7 +243,7 @@ private struct StepRow: View {
 
     private var circleFill: Color {
         switch state {
-        case .done:    return .green
+        case .done:    return Color.appSage
         case .active:  return .accentColor
         case .pending: return Color.secondary.opacity(0.15)
         }
@@ -270,8 +271,8 @@ struct TimerSection: View {
     private var progress: Double { Double(total - seconds) / Double(total) }
     private var color: Color {
         if seconds > 120 { return .accentColor }
-        if seconds > 60  { return .orange }
-        return .red
+        if seconds > 60  { return Color.appFlame }
+        return Color.appCoral
     }
 
     var body: some View {
@@ -294,11 +295,11 @@ struct TimerSection: View {
                 VStack(spacing: 2) {
                     Text(timeFormatted)
                         .font(.system(size: 36, weight: .bold, design: .monospaced))
-                        .foregroundStyle(finished ? .green : color)
+                        .foregroundStyle(finished ? Color.appSage : color)
                     if finished {
                         Text(String(localized: "lesson.timer.done"))
                             .font(.system(size: 12))
-                            .foregroundStyle(.green)
+                            .foregroundStyle(Color.appSage)
                     }
                 }
             }
@@ -351,7 +352,7 @@ struct TimerSection: View {
             }
         }
         .padding(16)
-        .background(Color(.secondarySystemGroupedBackground))
+        .background(Color.appCardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 18))
         .onReceive(timer) { _ in
             guard running, seconds > 0 else {
@@ -445,7 +446,7 @@ struct ClickerSection: View {
                 .multilineTextAlignment(.center)
         }
         .padding(16)
-        .background(Color(.secondarySystemGroupedBackground))
+        .background(Color.appCardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 18))
         .onAppear { haptic.prepare() }
     }
@@ -498,14 +499,14 @@ private struct BottomActionBar: View {
                     }
                     .frame(maxWidth: .infinity)
                     .frame(height: 50)
-                    .background(Color.green)
+                    .background(Color.appSage)
                     .foregroundStyle(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 14))
                 }
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 12)
-            .background(Color(.systemGroupedBackground))
+            .background(Color.appBackground)
         }
     }
 }

@@ -24,7 +24,7 @@ struct TodayPlanView: View {
                 if trainedToday {
                     Image(systemName: "checkmark.seal.fill")
                         .font(.system(size: 24))
-                        .foregroundStyle(.green)
+                        .foregroundStyle(Color.appSage)
                 }
             }
 
@@ -67,7 +67,7 @@ struct CommandRowView: View {
                     if command.isPremium {
                         Image(systemName: "crown.fill")
                             .font(.system(size: 10))
-                            .foregroundStyle(.yellow)
+                            .foregroundStyle(Color.appGold)
                     }
                 }
                 // Progress dots
@@ -98,13 +98,13 @@ struct CommandRowView: View {
                 .clipShape(Capsule())
         }
         .padding(14)
-        .background(Color(.secondarySystemGroupedBackground))
+        .background(Color.appCardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 14))
         .opacity(trainedToday ? 0.6 : 1.0)
         .overlay(
             trainedToday
             ? RoundedRectangle(cornerRadius: 14)
-                .strokeBorder(Color.green.opacity(0.3), lineWidth: 1)
+                .strokeBorder(Color.appSage.opacity(0.3), lineWidth: 1)
             : nil
         )
     }
@@ -116,26 +116,26 @@ struct CommandRowView: View {
 
     private func categoryColor(_ cat: CommandCategory) -> Color {
         switch cat {
-        case .obedience:  return .blue
-        case .social:     return .purple
-        case .tricks:     return .orange
-        case .behavioral: return .red
+        case .obedience:  return Color.appSage
+        case .social:     return Color.appRose
+        case .tricks:     return Color.appFlame
+        case .behavioral: return Color.appCoral
         }
     }
 
     private func difficultyBg(_ d: CommandDifficulty) -> Color {
         switch d {
-        case .beginner:     return .green.opacity(0.12)
-        case .intermediate: return .orange.opacity(0.12)
-        case .advanced:     return .red.opacity(0.12)
+        case .beginner:     return Color.appSage.opacity(0.12)
+        case .intermediate: return Color.appFlame.opacity(0.12)
+        case .advanced:     return Color.appCoral.opacity(0.12)
         }
     }
 
     private func difficultyFg(_ d: CommandDifficulty) -> Color {
         switch d {
-        case .beginner:     return .green
-        case .intermediate: return .orange
-        case .advanced:     return .red
+        case .beginner:     return Color.appSage
+        case .intermediate: return Color.appFlame
+        case .advanced:     return Color.appCoral
         }
     }
 }
@@ -155,7 +155,7 @@ private struct EmptyCommandsView: View {
         }
         .frame(maxWidth: .infinity)
         .padding(32)
-        .background(Color(.secondarySystemGroupedBackground))
+        .background(Color.appCardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 14))
     }
 }

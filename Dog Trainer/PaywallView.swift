@@ -8,6 +8,14 @@ struct PaywallView: View {
     @State private var selectedProductID: String = ProductID.monthly
     @State private var purchaseResult: PurchaseResult? = nil
     @State private var showSuccess = false
+    @State private var isLoadingProducts = false
+    // Право саме цього юзера на trial (перевіряється через StoreKit,
+    // враховує чи він вже використовував introductory offer раніше).
+    @State private var trialEligible: Bool = false
+
+    private var canPurchase: Bool {
+        !subscriptionManager.isPurchasing && selectedProduct != nil
+    }
 
     private var selectedProduct: Product? {
         subscriptionManager.products.first { $0.id == selectedProductID }
@@ -41,7 +49,7 @@ struct PaywallView: View {
                     // Features list
                     PaywallFeaturesView()
 
-                    // Product picker
+                    // Product picker / Loading / Empty
                     if !subscriptionManager.products.isEmpty {
                         ProductPickerView(
                             monthly: monthlyProduct,
@@ -49,13 +57,49 @@ struct PaywallView: View {
                             selectedID: $selectedProductID,
                             yearlySaving: yearlySaving
                         )
+                    } else if isLoadingProducts {
+                        HStack(spacing: 10) {
+                            SwiftUI.ProgressView()
+                            Text(String(localized: "paywall.products.loading"))
+                                .font(.system(size: 14))
+                                .foregroundStyle(.secondary)
+                        }
+                        .padding(20)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.appCardBackground)
+                        .clipShape(RoundedRectangle(cornerRadius: 14))
+                    } else {
+                        VStack(spacing: 10) {
+                            Image(systemName: "exclamationmark.triangle")
+                                .font(.system(size: 24))
+                                .foregroundStyle(Color.appFlame)
+                            Text(String(localized: "paywall.products.unavailable"))
+                                .font(.system(size: 14, weight: .medium))
+                                .multilineTextAlignment(.center)
+                            Text(String(localized: "paywall.products.retry.hint"))
+                                .font(.system(size: 12))
+                                .foregroundStyle(.secondary)
+                                .multilineTextAlignment(.center)
+                            Button {
+                                Task { await loadProducts() }
+                            } label: {
+                                Label(String(localized: "paywall.products.retry"),
+                                      systemImage: "arrow.clockwise")
+                                    .font(.system(size: 13, weight: .medium))
+                            }
+                            .padding(.top, 4)
+                        }
+                        .padding(20)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.appCardBackground)
+                        .clipShape(RoundedRectangle(cornerRadius: 14))
                     }
 
                     // Error
                     if let error = subscriptionManager.purchaseError {
                         Text(error)
                             .font(.system(size: 13))
-                            .foregroundStyle(.red)
+                            .foregroundStyle(Color.appCoral)
                             .multilineTextAlignment(.center)
                     }
 
@@ -75,14 +119,17 @@ struct PaywallView: View {
                             }
                             .frame(maxWidth: .infinity)
                             .frame(height: 56)
-                            .background(Color.accentColor)
+                            .background(canPurchase ? Color.accentColor : Color.secondary.opacity(0.3))
                             .foregroundStyle(.white)
                             .clipShape(RoundedRectangle(cornerRadius: 16))
                         }
-                        .disabled(subscriptionManager.isPurchasing || selectedProduct == nil)
+                        .disabled(!canPurchase)
+                        .animation(.easeInOut(duration: 0.2), value: canPurchase)
 
-                        // Trial label
-                        TrialBadgeView()
+                        // Trial label — показуємо тільки якщо юзер реально має право
+                        if trialEligible {
+                            TrialBadgeView()
+                        }
 
                         // Restore + legal
                         HStack(spacing: 16) {
@@ -91,10 +138,10 @@ struct PaywallView: View {
                             }
                             Text("·")
                             Link(String(localized: "paywall.privacy"),
-                                 destination: URL(string: "https://yourapp.com/privacy")!)
+                                 destination: URL(string: "https://pupcademy.app/privacy")!)
                             Text("·")
                             Link(String(localized: "paywall.terms"),
-                                 destination: URL(string: "https://yourapp.com/terms")!)
+                                 destination: URL(string: "https://pupcademy.app/terms")!)
                         }
                         .font(.system(size: 12))
                         .foregroundStyle(.secondary)
@@ -104,7 +151,7 @@ struct PaywallView: View {
                 .padding(.top, 8)
                 .padding(.bottom, 32)
             }
-            .background(Color(.systemGroupedBackground))
+            .background(Color.appBackground)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -124,19 +171,42 @@ struct PaywallView: View {
             }
         }
         .task {
+            // Прибираємо стару помилку при кожному відкритті paywall.
+            subscriptionManager.purchaseError = nil
             // Завантажити продукти якщо ще не завантажені
             if subscriptionManager.products.isEmpty {
-                await subscriptionManager.initialize()
+                await loadProducts()
             }
+            await refreshTrialEligibility()
         }
+        .onChange(of: selectedProductID) { _, _ in
+            Task { await refreshTrialEligibility() }
+        }
+    }
+
+    private func loadProducts() async {
+        isLoadingProducts = true
+        defer { isLoadingProducts = false }
+        await subscriptionManager.initialize()
+    }
+
+    /// Перевіряємо чи має юзер право на free trial для обраного продукту.
+    /// StoreKit сам врахує історію transactions (chi trial вже було спожито).
+    private func refreshTrialEligibility() async {
+        guard let sub = selectedProduct?.subscription,
+              sub.introductoryOffer != nil else {
+            trialEligible = false
+            return
+        }
+        trialEligible = await sub.isEligibleForIntroOffer
     }
 
     // MARK: - Helpers
 
     private var ctaTitle: String {
-        // Якщо trial доступний — показуємо "Спробувати безкоштовно"
-        if let product = selectedProduct,
-           product.subscription?.introductoryOffer != nil {
+        // Показуємо "Спробувати безкоштовно" тільки якщо юзер реально має право
+        // на intro offer (StoreKit пам'ятає попередні trials).
+        if trialEligible {
             return String(localized: "paywall.cta.trial")
         }
         return String(localized: "paywall.cta.subscribe")
@@ -159,8 +229,7 @@ struct PaywallView: View {
 private struct PaywallHeroView: View {
     var body: some View {
         VStack(spacing: 10) {
-            Text("🐾")
-                .font(.system(size: 64))
+            BrandIcon(.paw, size: 88)
             Text(String(localized: "paywall.title"))
                 .font(.system(size: 28, weight: .bold))
                 .multilineTextAlignment(.center)
@@ -185,7 +254,7 @@ private struct PaywallFeaturesView: View {
 
     var body: some View {
         VStack(spacing: 10) {
-            ForEach(features, id: \.title) { feature in
+            ForEach(features, id: \.icon) { feature in
                 HStack(spacing: 14) {
                     Image(systemName: feature.icon)
                         .font(.system(size: 20))
@@ -201,10 +270,10 @@ private struct PaywallFeaturesView: View {
                     Spacer()
                     Image(systemName: "checkmark")
                         .font(.system(size: 12, weight: .bold))
-                        .foregroundStyle(.green)
+                        .foregroundStyle(Color.appSage)
                 }
                 .padding(14)
-                .background(Color(.secondarySystemGroupedBackground))
+                .background(Color.appCardBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
             }
         }
@@ -282,14 +351,14 @@ private struct ProductCard: View {
                             .font(.system(size: 10, weight: .medium))
                             .padding(.horizontal, 6)
                             .padding(.vertical, 2)
-                            .background(Color.green)
+                            .background(Color.appSage)
                             .foregroundStyle(.white)
                             .clipShape(Capsule())
                     }
                 }
             }
             .padding(16)
-            .background(Color(.secondarySystemGroupedBackground))
+            .background(Color.appCardBackground)
             .clipShape(RoundedRectangle(cornerRadius: 14))
             .overlay(
                 RoundedRectangle(cornerRadius: 14)
@@ -329,8 +398,7 @@ private struct PurchaseSuccessOverlay: View {
         ZStack {
             Color.black.opacity(0.4).ignoresSafeArea()
             VStack(spacing: 20) {
-                Text("🎉")
-                    .font(.system(size: 60))
+                BrandIcon(.confetti, size: 80)
                     .scaleEffect(appeared ? 1 : 0.3)
                     .animation(.spring(response: 0.5, dampingFraction: 0.6), value: appeared)
                 Text(String(localized: "paywall.success.title"))
@@ -348,7 +416,7 @@ private struct PurchaseSuccessOverlay: View {
                     .clipShape(RoundedRectangle(cornerRadius: 14))
             }
             .padding(28)
-            .background(Color(.secondarySystemGroupedBackground))
+            .background(Color.appCardBackground)
             .clipShape(RoundedRectangle(cornerRadius: 24))
             .padding(32)
             .opacity(appeared ? 1 : 0)

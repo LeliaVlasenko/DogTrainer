@@ -21,10 +21,9 @@ struct OnboardingBreedView: View {
                 // Illustration
                 ZStack {
                     Circle()
-                        .fill(Color.orange.opacity(0.1))
+                        .fill(Color.appFlame.opacity(0.1))
                         .frame(width: 120, height: 120)
-                    Text("🐕")
-                        .font(.system(size: 56))
+                    BrandIcon(.dogAdult, size: 80)
                 }
                 .padding(.top, 24)
 
@@ -49,7 +48,7 @@ struct OnboardingBreedView: View {
                         .font(.system(size: 18, weight: .medium))
                         .padding(.horizontal, 16)
                         .padding(.vertical, 14)
-                        .background(Color(.secondarySystemGroupedBackground))
+                        .background(Color.appCardBackground)
                         .clipShape(RoundedRectangle(cornerRadius: 14))
                         .focused($isFocused)
                         .autocorrectionDisabled()
@@ -74,7 +73,7 @@ struct OnboardingBreedView: View {
                             .padding(.vertical, 7)
                             .background(dogBreed == breed
                                 ? Color.accentColor.opacity(0.15)
-                                : Color(.secondarySystemGroupedBackground))
+                                : Color.appCardBackground)
                             .foregroundStyle(dogBreed == breed ? Color.accentColor : .primary)
                             .clipShape(Capsule())
                             .overlay(
@@ -117,7 +116,7 @@ struct OnboardingBreedView: View {
                         .font(.system(size: 16))
                         .padding(.horizontal, 16)
                         .padding(.vertical, 14)
-                        .background(Color(.secondarySystemGroupedBackground))
+                        .background(Color.appCardBackground)
                         .clipShape(RoundedRectangle(cornerRadius: 14))
                     }
                     .buttonStyle(.plain)

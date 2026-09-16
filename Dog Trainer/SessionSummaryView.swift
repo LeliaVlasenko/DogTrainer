@@ -13,12 +13,12 @@ struct SessionSummaryView: View {
     private var totalCount: Int { results.count }
     private var successRate: Int { totalCount > 0 ? Int(Double(successCount) / Double(totalCount) * 100) : 0 }
 
-    private var summaryEmoji: String {
+    private var summaryIcon: BrandIconName {
         switch successRate {
-        case 100:      return "🏆"
-        case 67...:    return "🌟"
-        case 34...:    return "👍"
-        default:       return "💪"
+        case 100:      return .trophy
+        case 67...:    return .star
+        case 34...:    return .thumbsUp
+        default:       return .muscle
         }
     }
 
@@ -36,8 +36,7 @@ struct SessionSummaryView: View {
             VStack(spacing: 24) {
                 // Trophy
                 VStack(spacing: 8) {
-                    Text(summaryEmoji)
-                        .font(.system(size: 72))
+                    BrandIcon(summaryIcon, size: 96)
                         .scaleEffect(appeared ? 1 : 0.3)
                         .animation(.spring(response: 0.5, dampingFraction: 0.6).delay(0.1), value: appeared)
 
@@ -90,7 +89,7 @@ struct SessionSummaryView: View {
                         HStack(spacing: 12) {
                             Image(systemName: result.succeeded ? "checkmark.circle.fill" : "xmark.circle.fill")
                                 .font(.system(size: 20))
-                                .foregroundStyle(result.succeeded ? .green : Color.secondary.opacity(0.5))
+                                .foregroundStyle(result.succeeded ? Color.appSage : Color.secondary.opacity(0.5))
                             Text(result.commandTitle)
                                 .font(.system(size: 15))
                             Spacer()
@@ -98,10 +97,10 @@ struct SessionSummaryView: View {
                                  ? String(localized: "summary.result.success")
                                  : String(localized: "summary.result.skip"))
                                 .font(.system(size: 12))
-                                .foregroundStyle(result.succeeded ? .green : .secondary)
+                                .foregroundStyle(result.succeeded ? Color.appSage : .secondary)
                         }
                         .padding(12)
-                        .background(Color(.secondarySystemGroupedBackground))
+                        .background(Color.appCardBackground)
                         .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
                 }
@@ -120,8 +119,7 @@ struct SessionSummaryView: View {
                                 withAnimation(.spring(response: 0.3)) { moodSelection = mood }
                             } label: {
                                 VStack(spacing: 4) {
-                                    Text(mood.emoji)
-                                        .font(.system(size: 28))
+                                    BrandIcon(mood.iconName, size: 36)
                                     Text(mood.localizedTitle)
                                         .font(.system(size: 10))
                                         .foregroundStyle(moodSelection == mood ? Color.accentColor : .secondary)
@@ -130,7 +128,7 @@ struct SessionSummaryView: View {
                                 .padding(.vertical, 10)
                                 .background(moodSelection == mood
                                             ? Color.accentColor.opacity(0.1)
-                                            : Color(.secondarySystemGroupedBackground))
+                                            : Color.appCardBackground)
                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 12)
@@ -162,7 +160,7 @@ struct SessionSummaryView: View {
             }
             .padding(.horizontal, 20)
         }
-        .background(Color(.systemGroupedBackground))
+        .background(Color.appBackground)
         .navigationBarBackButtonHidden()
         .onAppear {
             appeared = true
@@ -193,7 +191,7 @@ private struct StatCard: View {
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 14)
-        .background(Color(.secondarySystemGroupedBackground))
+        .background(Color.appCardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 14))
     }
 }

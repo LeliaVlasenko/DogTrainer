@@ -46,18 +46,17 @@ struct StreakBannerView: View {
                 ZStack {
                     Circle()
                         .fill(dog.currentStreak > 0
-                              ? Color.orange.opacity(0.15)
+                              ? Color.appFlame.opacity(0.15)
                               : Color.secondary.opacity(0.08))
                         .frame(width: 64, height: 64)
-                    Text(dog.currentStreak > 0 ? "🔥" : "💤")
-                        .font(.system(size: 34))
+                    BrandIcon(dog.currentStreak > 0 ? .flame : .sleep, size: 48)
                 }
 
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(alignment: .firstTextBaseline, spacing: 4) {
                         Text("\(dog.currentStreak)")
                             .font(.system(size: 40, weight: .bold, design: .rounded))
-                            .foregroundStyle(dog.currentStreak > 0 ? .orange : .secondary)
+                            .foregroundStyle(dog.currentStreak > 0 ? Color.appFlame : .secondary)
                             .contentTransition(.numericText())
                         Text(String(localized: "progress.streak.days"))
                             .font(.system(size: 16))
@@ -73,8 +72,7 @@ struct StreakBannerView: View {
 
                 // Best streak
                 VStack(spacing: 2) {
-                    Text("🏆")
-                        .font(.system(size: 20))
+                    BrandIcon(.trophy, size: 26)
                     Text("\(longestStreak)")
                         .font(.system(size: 18, weight: .bold))
                     Text(String(localized: "progress.streak.best"))
@@ -111,7 +109,7 @@ struct StreakBannerView: View {
             }
         }
         .padding(16)
-        .background(Color(.secondarySystemGroupedBackground))
+        .background(Color.appCardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 18))
     }
 

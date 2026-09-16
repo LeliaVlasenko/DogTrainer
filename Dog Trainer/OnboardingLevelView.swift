@@ -10,10 +10,9 @@ struct OnboardingLevelView: View {
                 // Illustration
                 ZStack {
                     Circle()
-                        .fill(Color.purple.opacity(0.1))
+                        .fill(Color.appRose.opacity(0.1))
                         .frame(width: 120, height: 120)
-                    Text("🎓")
-                        .font(.system(size: 56))
+                    BrandIcon(.graduation, size: 80)
                 }
                 .padding(.top, 24)
 
@@ -43,14 +42,14 @@ struct OnboardingLevelView: View {
                 // Tip
                 HStack(alignment: .top, spacing: 10) {
                     Image(systemName: "lightbulb.fill")
-                        .foregroundStyle(.yellow)
+                        .foregroundStyle(Color.appGold)
                         .font(.system(size: 14))
                     Text(String(localized: "onboarding.level.tip"))
                         .font(.system(size: 13))
                         .foregroundStyle(.secondary)
                 }
                 .padding(14)
-                .background(Color.yellow.opacity(0.08))
+                .background(Color.appGold.opacity(0.08))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .padding(.horizontal, 4)
 
@@ -76,10 +75,9 @@ private struct LevelCard: View {
                     Circle()
                         .fill(isSelected
                               ? Color.accentColor.opacity(0.15)
-                              : Color(.tertiarySystemGroupedBackground))
+                              : Color.appNestedBackground)
                         .frame(width: 52, height: 52)
-                    Text(level.emoji)
-                        .font(.system(size: 26))
+                    BrandIcon(level.iconName, size: 36)
                 }
 
                 // Text
@@ -101,7 +99,7 @@ private struct LevelCard: View {
                     .foregroundStyle(isSelected ? Color.accentColor : Color.secondary.opacity(0.4))
             }
             .padding(16)
-            .background(Color(.secondarySystemGroupedBackground))
+            .background(Color.appCardBackground)
             .clipShape(RoundedRectangle(cornerRadius: 16))
             .overlay(
                 RoundedRectangle(cornerRadius: 16)

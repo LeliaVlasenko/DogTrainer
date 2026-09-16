@@ -4,8 +4,8 @@ import SwiftUI
 // MARK: - Product IDs (мають збігатись з App Store Connect)
 
 enum ProductID {
-    static let monthly  = "com.yourapp.dogtrainer.monthly"
-    static let yearly   = "com.yourapp.dogtrainer.yearly"
+    static let monthly  = "com.lelia.Dog-Academy.monthly"
+    static let yearly   = "com.lelia.Dog-Academy.yearly"
 
     static var all: [String] { [monthly, yearly] }
 }
@@ -55,6 +55,21 @@ final class SubscriptionManager {
     var purchaseError: String? = nil
     var isPurchasing = false
 
+    /// Developer-bypass: розблоковує всі premium-фічі. Доступно тільки
+    /// у DEBUG/DEVELOPER_MODE-білдах (див. DeveloperMode.isAvailable).
+    var devUnlockAll: Bool = UserDefaults.standard.bool(forKey: DeveloperMode.unlockAllCommandsKey) {
+        didSet {
+            UserDefaults.standard.set(devUnlockAll, forKey: DeveloperMode.unlockAllCommandsKey)
+        }
+    }
+
+    /// Premium-доступ у поточний момент (з урахуванням dev-bypass).
+    /// Використовуй цю властивість замість `status.isPremium` у views.
+    var isPremium: Bool {
+        if DeveloperMode.isAvailable && devUnlockAll { return true }
+        return status.isPremium
+    }
+
     // MARK: Private
 
     private var updateListenerTask: Task<Void, Never>?
@@ -64,10 +79,6 @@ final class SubscriptionManager {
     init() {
         // Слухаємо транзакції (renewals, revocations) у фоні
         updateListenerTask = listenForTransactionUpdates()
-    }
-
-    deinit {
-        updateListenerTask?.cancel()
     }
 
     // MARK: - Public API
@@ -140,7 +151,10 @@ final class SubscriptionManager {
             if let offerType = transaction.offerType,
                offerType == .introductory,
                let expiry = transaction.expirationDate {
-                let days = Calendar.current.dateComponents([.day], from: .now, to: expiry).day ?? 0
+                // Округлюємо вгору: якщо залишилось 12 годин — показуємо "1 день",
+                // а не "0", інакше юзер бачить "trial ends today" передчасно.
+                let seconds = expiry.timeIntervalSince(.now)
+                let days = Int(ceil(seconds / 86_400))
                 trialDaysLeft = max(0, days)
             }
 
@@ -185,10 +199,10 @@ final class SubscriptionManager {
 
     private func hasSubscriptionHistory() async -> Bool {
         for await result in Transaction.all {
-            if let transaction = try? checkVerified(result),
-               transaction.productType == .autoRenewable {
-                return true
-            }
+            guard let transaction = try? checkVerified(result) else { continue }
+            guard transaction.productType == .autoRenewable else { continue }
+            guard ProductID.all.contains(transaction.productID) else { continue }
+            return true
         }
         return false
     }

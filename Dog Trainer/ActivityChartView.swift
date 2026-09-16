@@ -43,8 +43,8 @@ struct ActivityChartView: View {
                 )
                 .foregroundStyle(
                     day.sessionCount > 0
-                    ? Color.accentColor.gradient
-                    : Color.secondary.opacity(0.15)
+                    ? AnyShapeStyle(Color.accentColor.gradient)
+                    : AnyShapeStyle(Color.secondary.opacity(0.15))
                 )
                 .cornerRadius(4)
             }
@@ -93,7 +93,7 @@ struct ActivityChartView: View {
             }
         }
         .padding(16)
-        .background(Color(.secondarySystemGroupedBackground))
+        .background(Color.appCardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 18))
     }
 

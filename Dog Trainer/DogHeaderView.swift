@@ -19,8 +19,7 @@ struct DogHeaderView: View {
                 Circle()
                     .fill(Color.accentColor.opacity(0.12))
                     .frame(width: 64, height: 64)
-                Text(dog.level.emoji)
-                    .font(.system(size: 34))
+                DogAvatar(dog: dog, size: 64)
             }
 
             // Name + greeting
@@ -40,11 +39,10 @@ struct DogHeaderView: View {
             // Streak badge
             if dog.currentStreak > 0 {
                 VStack(spacing: 2) {
-                    Text("🔥")
-                        .font(.system(size: 22))
+                    BrandIcon(.flame, size: 28)
                     Text("\(dog.currentStreak)")
                         .font(.system(size: 15, weight: .bold))
-                        .foregroundStyle(.orange)
+                        .foregroundStyle(Color.appFlame)
                     Text(String(localized: "home.streak.days"))
                         .font(.system(size: 10))
                         .foregroundStyle(.secondary)
@@ -53,7 +51,7 @@ struct DogHeaderView: View {
             }
         }
         .padding(16)
-        .background(Color(.secondarySystemGroupedBackground))
+        .background(Color.appCardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 18))
     }
 }

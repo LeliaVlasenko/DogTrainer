@@ -12,8 +12,7 @@ struct OnboardingNameView: View {
                     Circle()
                         .fill(Color.accentColor.opacity(0.1))
                         .frame(width: 120, height: 120)
-                    Text("🐾")
-                        .font(.system(size: 56))
+                    BrandIcon(.paw, size: 80)
                 }
                 .padding(.top, 24)
 
@@ -38,7 +37,7 @@ struct OnboardingNameView: View {
                         .font(.system(size: 20, weight: .medium))
                         .padding(.horizontal, 16)
                         .padding(.vertical, 14)
-                        .background(Color(.secondarySystemGroupedBackground))
+                        .background(Color.appCardBackground)
                         .clipShape(RoundedRectangle(cornerRadius: 14))
                         .focused($isFocused)
                         .submitLabel(.next)
@@ -51,7 +50,7 @@ struct OnboardingNameView: View {
                 if !dogName.isEmpty {
                     HStack(spacing: 6) {
                         Image(systemName: "checkmark.circle.fill")
-                            .foregroundStyle(.green)
+                            .foregroundStyle(Color.appSage)
                         Text(String(localized: "onboarding.name.preview \(dogName)"))
                             .font(.system(size: 15))
                             .foregroundStyle(.secondary)

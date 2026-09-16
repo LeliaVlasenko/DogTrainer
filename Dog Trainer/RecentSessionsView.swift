@@ -23,7 +23,7 @@ struct RecentSessionsView: View {
             }
         }
         .padding(16)
-        .background(Color(.secondarySystemGroupedBackground))
+        .background(Color.appCardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 18))
     }
 }
@@ -34,8 +34,8 @@ private struct SessionRow: View {
     private var successRate: Int { Int(session.successRate * 100) }
     private var rateColor: Color {
         switch successRate {
-        case 80...: return .green
-        case 50...: return .orange
+        case 80...: return Color.appSage
+        case 50...: return Color.appFlame
         default:    return .secondary
         }
     }
@@ -43,8 +43,7 @@ private struct SessionRow: View {
     var body: some View {
         HStack(spacing: 12) {
             // Mood emoji
-            Text(session.mood.emoji)
-                .font(.system(size: 24))
+            BrandIcon(session.mood.iconName, size: 32)
                 .frame(width: 36)
 
             VStack(alignment: .leading, spacing: 3) {
@@ -71,7 +70,7 @@ private struct SessionRow: View {
                 .clipShape(Capsule())
         }
         .padding(12)
-        .background(Color(.tertiarySystemGroupedBackground))
+        .background(Color.appNestedBackground)
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }

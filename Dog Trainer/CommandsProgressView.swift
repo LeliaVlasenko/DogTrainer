@@ -83,7 +83,7 @@ struct CommandsProgressView: View {
             }
         }
         .padding(16)
-        .background(Color(.secondarySystemGroupedBackground))
+        .background(Color.appCardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 18))
     }
 }
@@ -96,7 +96,7 @@ private struct CommandProgressRow: View {
     @State private var animatedProgress: Double = 0
 
     private var progressColor: Color {
-        command.isMastered ? .green : .accentColor
+        command.isMastered ? Color.appSage : .accentColor
     }
 
     var body: some View {
@@ -114,12 +114,12 @@ private struct CommandProgressRow: View {
                     if command.isMastered {
                         Image(systemName: "checkmark.seal.fill")
                             .font(.system(size: 12))
-                            .foregroundStyle(.green)
+                            .foregroundStyle(Color.appSage)
                     }
                     if command.isPremium {
                         Image(systemName: "crown.fill")
                             .font(.system(size: 10))
-                            .foregroundStyle(.yellow)
+                            .foregroundStyle(Color.appGold)
                     }
                     Spacer()
                     Text(command.isMastered
@@ -145,7 +145,7 @@ private struct CommandProgressRow: View {
             }
         }
         .padding(12)
-        .background(Color(.tertiarySystemGroupedBackground))
+        .background(Color.appNestedBackground)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -178,7 +178,7 @@ private struct CategoryChip: View {
             }
             .padding(.horizontal, 12)
             .padding(.vertical, 7)
-            .background(isSelected ? Color.accentColor : Color(.tertiarySystemGroupedBackground))
+            .background(isSelected ? Color.accentColor : Color.appNestedBackground)
             .foregroundStyle(isSelected ? .white : .primary)
             .clipShape(Capsule())
             .animation(.easeInOut(duration: 0.15), value: isSelected)

@@ -12,7 +12,7 @@ struct SubscriptionGateModifier: ViewModifier {
     @State private var showPaywall = false
 
     func body(content: Content) -> some View {
-        if subscriptionManager.status.isPremium {
+        if subscriptionManager.isPremium {
             content
         } else {
             content
@@ -83,7 +83,7 @@ struct TrialReminderBanner: View {
             Button { showPaywall = true } label: {
                 HStack(spacing: 10) {
                     Image(systemName: "clock.badge.exclamationmark")
-                        .foregroundStyle(.orange)
+                        .foregroundStyle(Color.appFlame)
                     Text(days == 0
                          ? String(localized: "trial.ends.today")
                          : String(localized: "trial.ends.days \(days)"))
@@ -94,11 +94,11 @@ struct TrialReminderBanner: View {
                         .foregroundStyle(Color.accentColor)
                 }
                 .padding(14)
-                .background(Color.orange.opacity(0.1))
+                .background(Color.appFlame.opacity(0.1))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .overlay(
                     RoundedRectangle(cornerRadius: 12)
-                        .strokeBorder(Color.orange.opacity(0.3), lineWidth: 1)
+                        .strokeBorder(Color.appFlame.opacity(0.3), lineWidth: 1)
                 )
             }
             .buttonStyle(.plain)

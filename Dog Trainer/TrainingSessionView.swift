@@ -4,6 +4,11 @@ import SwiftData
 struct TrainingSessionView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
+    @Environment(NotificationManager.self) private var notificationManager
+    @Environment(AchievementManager.self) private var achievements
+    @Query private var allSessions: [TrainingSession]
+    @Query private var allCommands: [Command]
+    @Query private var earnedBadges: [EarnedBadge]
 
     let dog: Dog
     let commands: [Command]
@@ -91,5 +96,21 @@ struct TrainingSessionView: View {
         session.commandResults = results
         modelContext.insert(session)
         try? modelContext.save()
+
+        // Donate shortcut — Siri вчиться на частоті використання
+        donateTrainingShortcut(dogName: dog.name)
+
+        // Перепланувати нагадування (зняти streak-at-risk на сьогодні)
+        Task { await notificationManager.rescheduleAll(dog: dog) }
+
+        // Перевірити досягнення — toast з'явиться через AchievementManager
+        achievements.checkAfterSession(
+            session: session,
+            dog: dog,
+            allSessions: allSessions,
+            allCommands: allCommands,
+            earnedBadges: earnedBadges,
+            context: modelContext
+        )
     }
 }

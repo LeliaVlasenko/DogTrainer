@@ -3,6 +3,7 @@ import SwiftData
 
 struct OnboardingView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(NotificationManager.self) private var notificationManager
     @AppStorage("onboardingDone") private var onboardingDone = false
 
     @State private var currentStep = 0
@@ -13,7 +14,7 @@ struct OnboardingView: View {
 
     var body: some View {
         ZStack(alignment: .top) {
-            Color(.systemGroupedBackground).ignoresSafeArea()
+            Color.appBackground.ignoresSafeArea()
 
             VStack(spacing: 0) {
                 // Progress dots
@@ -106,6 +107,16 @@ struct OnboardingView: View {
         }
 
         try? modelContext.save()
+
+        // Фіксуємо поточну версію seed-набору, щоб top-up при старті нічого не дублював
+        UserDefaults.standard.set(Command.currentSeedVersion, forKey: Command.seedVersionKey)
+
+        // Запит дозволу на сповіщення + первинне планування
+        Task {
+            _ = await notificationManager.requestPermission()
+            await notificationManager.rescheduleAll(dog: dog)
+        }
+
         onboardingDone = true
     }
 }
@@ -113,4 +124,5 @@ struct OnboardingView: View {
 #Preview {
     OnboardingView()
         .modelContainer(ModelContainer.preview)
+        .environment(NotificationManager())
 }

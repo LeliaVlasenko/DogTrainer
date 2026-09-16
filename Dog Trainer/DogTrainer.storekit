@@ -1,11 +1,11 @@
 {
-  "identifier" : "DogTrainer",
+  "identifier" : "Pupcademy",
   "nonConsumableProducts" : [],
   "consumableProducts" : [],
   "autoRenewableSubscriptions" : [
     {
-      "displayName" : "Dog Trainer Monthly",
-      "productID" : "com.yourapp.dogtrainer.monthly",
+      "displayName" : "Pupcademy Monthly",
+      "productID" : "com.lelia.Dog-Academy.monthly",
       "referenceName" : "monthly",
       "recurringSubscriptionPeriod" : "P1M",
       "localizations" : [
@@ -31,11 +31,11 @@
         "subscriptionPeriod" : "P14D",
         "paymentMode" : "FREE_TRIAL"
       },
-      "subscriptionGroupID" : "dog_trainer_premium"
+      "subscriptionGroupID" : "pupcademy_premium"
     },
     {
-      "displayName" : "Dog Trainer Yearly",
-      "productID" : "com.yourapp.dogtrainer.yearly",
+      "displayName" : "Pupcademy Yearly",
+      "productID" : "com.lelia.Dog-Academy.yearly",
       "referenceName" : "yearly",
       "recurringSubscriptionPeriod" : "P1Y",
       "localizations" : [
@@ -61,13 +61,13 @@
         "subscriptionPeriod" : "P14D",
         "paymentMode" : "FREE_TRIAL"
       },
-      "subscriptionGroupID" : "dog_trainer_premium"
+      "subscriptionGroupID" : "pupcademy_premium"
     }
   ],
   "subscriptionGroups" : [
     {
-      "id" : "dog_trainer_premium",
-      "name" : "Dog Trainer Premium"
+      "id" : "pupcademy_premium",
+      "name" : "Pupcademy Premium"
     }
   ],
   "version" : {

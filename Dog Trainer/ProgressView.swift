@@ -60,7 +60,7 @@ struct ProgressView: View {
                 .padding(.top, 8)
                 .padding(.bottom, 32)
             }
-            .background(Color(.systemGroupedBackground))
+            .background(Color.appBackground)
             .navigationTitle(String(localized: "tab.progress"))
             .navigationBarTitleDisplayMode(.large)
         }

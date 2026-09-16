@@ -73,7 +73,21 @@ enum SessionMood: String, Codable, CaseIterable {
         }
     }
 
+    var iconName: BrandIconName {
+        switch self {
+        case .great: return .star
+        case .good:  return .moodGood
+        case .okay:  return .moodOkay
+        case .bad:   return .moodBad
+        }
+    }
+
     var localizedTitle: String {
-        String(localized: "mood.\(rawValue)")
+        switch self {
+        case .great: return String(localized: "mood.great")
+        case .good:  return String(localized: "mood.good")
+        case .okay:  return String(localized: "mood.okay")
+        case .bad:   return String(localized: "mood.bad")
+        }
     }
 }

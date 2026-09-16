@@ -50,10 +50,11 @@ struct MainTabView: View {
                 }
                 .tag(AppTab.progress)
 
-            Text(String(localized: "tab.library"))
+            LibraryView()
                 .tabItem {
                     Label(String(localized: "tab.library"), systemImage: "books.vertical")
                 }
+                .tag(AppTab.library)
         }
     }
 }
@@ -62,4 +63,5 @@ struct MainTabView: View {
     ContentView()
         .modelContainer(ModelContainer.preview)
         .environment(SubscriptionManager())
+        .environment(NotificationManager())
 }
