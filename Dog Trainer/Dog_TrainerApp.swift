@@ -61,6 +61,9 @@ struct Dog_TrainerApp: App {
                 .environment(notificationManager)
                 .environment(achievementManager)
                 .badgeToastOverlay(achievementManager)
+                // Бренд-палітра — тепла бежева, побудована лише для світлої теми.
+                // Форсуємо light mode щоб системний dark не робив білий текст на беж.
+                .preferredColorScheme(.light)
                 .task {
                     await subscriptionManager.initialize()
                     await notificationManager.refreshPermission()
