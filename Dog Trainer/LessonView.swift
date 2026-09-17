@@ -166,7 +166,8 @@ private struct StepsSection: View {
 
                     Spacer()
 
-                    Text("\(currentStep + 1) / \(steps.count)")
+                    // Коли currentStep == steps.count — усі кроки пройдені.
+                    Text("\(min(currentStep + 1, steps.count)) / \(steps.count)")
                         .font(.system(size: 13))
                         .foregroundStyle(.secondary)
 
@@ -174,13 +175,15 @@ private struct StepsSection: View {
 
                     Button {
                         withAnimation(.spring(response: 0.35)) {
-                            currentStep = min(steps.count - 1, currentStep + 1)
+                            // Дозволяємо дійти до steps.count (один крок за
+                            // межами масиву) — тоді останній крок стає .done.
+                            currentStep = min(steps.count, currentStep + 1)
                         }
                     } label: {
                         Text(String(localized: "lesson.steps.next"))
                         Image(systemName: "chevron.right")
                     }
-                    .disabled(currentStep == steps.count - 1)
+                    .disabled(currentStep >= steps.count)
                 }
                 .font(.system(size: 14))
                 .foregroundStyle(Color.accentColor)
