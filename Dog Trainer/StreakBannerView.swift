@@ -108,9 +108,12 @@ struct StreakBannerView: View {
                 )
             }
         }
-        .padding(16)
-        .background(Color.appCardBackground)
-        .clipShape(RoundedRectangle(cornerRadius: 18))
+        .cardStyle(radius: 18)
+        // Success-haptic коли streak долає milestone. Тригер спрацьовує
+        // при зміні числа — якщо нове = 3/7/14/30, віддаємо feedback.
+        .sensoryFeedback(trigger: dog.currentStreak) { _, newValue in
+            [3, 7, 14, 30].contains(newValue) ? .success : nil
+        }
     }
 
     private var streakSubtitle: String {

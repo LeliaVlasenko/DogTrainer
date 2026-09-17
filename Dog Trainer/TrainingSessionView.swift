@@ -59,6 +59,9 @@ struct TrainingSessionView: View {
                 }
             }
         }
+        .onAppear {
+            Telemetry.log(.sessionStarted(commandCount: commands.count))
+        }
     }
 
     // MARK: - Logic
@@ -96,6 +99,12 @@ struct TrainingSessionView: View {
         // (з summary), не хочемо створювати другий TrainingSession в БД.
         guard !hasBeenSaved, !results.isEmpty else { return }
         hasBeenSaved = true
+        let successCount = results.filter { $0.succeeded }.count
+        Telemetry.log(.sessionCompleted(
+            duration: Int(Date().timeIntervalSince(sessionStart)),
+            successCount: successCount,
+            totalCount: results.count
+        ))
         let session = TrainingSession(
             date: sessionStart,
             durationSeconds: Int(Date().timeIntervalSince(sessionStart)),

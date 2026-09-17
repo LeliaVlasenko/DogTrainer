@@ -120,9 +120,7 @@ private struct CommandHeaderSection: View {
                 .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity)
-        .padding(20)
-        .background(Color.appCardBackground)
-        .clipShape(RoundedRectangle(cornerRadius: 18))
+        .cardStyle(padding: 20, radius: 18)
     }
 }
 
@@ -190,9 +188,7 @@ private struct StepsSection: View {
                 .padding(.top, 4)
             }
         }
-        .padding(16)
-        .background(Color.appCardBackground)
-        .clipShape(RoundedRectangle(cornerRadius: 18))
+        .cardStyle(radius: 18)
     }
 
     private func stepState(_ idx: Int) -> StepRow.State {
@@ -354,9 +350,7 @@ struct TimerSection: View {
                 .disabled(seconds >= total)
             }
         }
-        .padding(16)
-        .background(Color.appCardBackground)
-        .clipShape(RoundedRectangle(cornerRadius: 18))
+        .cardStyle(radius: 18)
         .onReceive(timer) { _ in
             guard running, seconds > 0 else {
                 if running && seconds == 0 {
@@ -448,9 +442,7 @@ struct ClickerSection: View {
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
         }
-        .padding(16)
-        .background(Color.appCardBackground)
-        .clipShape(RoundedRectangle(cornerRadius: 18))
+        .cardStyle(radius: 18)
         .onAppear { haptic.prepare() }
     }
 

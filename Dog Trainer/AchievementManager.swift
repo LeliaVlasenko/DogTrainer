@@ -91,6 +91,10 @@ final class AchievementManager {
 
         try? context.save()
 
+        for badge in newBadges {
+            Telemetry.log(.badgeEarned(id: badge.id))
+        }
+
         // Показати toast для першого нового бейджу
         // (якщо їх кілька — покажемо по одному з затримкою)
         showSequentially(newBadges)

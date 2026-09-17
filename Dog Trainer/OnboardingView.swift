@@ -11,6 +11,7 @@ struct OnboardingView: View {
     @State private var dogBreed = ""
     @State private var dogBirthDate: Date? = nil
     @State private var dogLevel: DogLevel = .puppy
+    @State private var showPaywall = false
 
     var body: some View {
         ZStack(alignment: .top) {
@@ -71,6 +72,15 @@ struct OnboardingView: View {
                 .padding(.bottom, 32)
             }
         }
+        .onAppear { Telemetry.log(.onboardingStarted) }
+        // Soft-sell paywall на емоційному піку — юзер щойно налаштував
+        // собаку і бачить преміум-переваги ДО того як зайде у HomeView.
+        // Закриє паваллом (X) → onboardingDone = true → HomeView.
+        .fullScreenCover(isPresented: $showPaywall, onDismiss: {
+            onboardingDone = true
+        }) {
+            PaywallView()
+        }
     }
 
     // MARK: - Logic
@@ -117,7 +127,10 @@ struct OnboardingView: View {
             await notificationManager.rescheduleAll(dog: dog)
         }
 
-        onboardingDone = true
+        Telemetry.log(.onboardingCompleted(level: dogLevel.rawValue))
+        // Показуємо paywall як фінальний крок онбордингу — найвища конверсія
+        // на емоційному піку. onboardingDone виставляється в onDismiss.
+        showPaywall = true
     }
 }
 

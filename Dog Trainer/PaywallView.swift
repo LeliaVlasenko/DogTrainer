@@ -143,6 +143,7 @@ struct PaywallView: View {
 
                         // Friend / promo code redemption
                         RedeemCodeButton {
+                            Telemetry.log(.redeemCodeOpened)
                             showRedemption = true
                         }
 
@@ -208,6 +209,7 @@ struct PaywallView: View {
             }
         }
         .task {
+            Telemetry.log(.paywallShown(source: "unknown"))
             // Прибираємо стару помилку при кожному відкритті paywall.
             subscriptionManager.purchaseError = nil
             // Завантажити продукти якщо ще не завантажені
@@ -216,6 +218,7 @@ struct PaywallView: View {
             }
             await refreshTrialEligibility()
         }
+        .onDisappear { Telemetry.log(.paywallDismissed) }
         .onChange(of: selectedProductID) { _, _ in
             Task { await refreshTrialEligibility() }
         }
@@ -254,6 +257,7 @@ struct PaywallView: View {
         let result = await subscriptionManager.purchase(product)
         switch result {
         case .success:
+            Telemetry.log(.paywallPurchase(productId: product.id))
             withAnimation { showSuccess = true }
         case .cancelled, .pending, .failed:
             break
