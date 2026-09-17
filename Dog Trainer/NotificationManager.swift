@@ -121,12 +121,28 @@ final class NotificationManager {
         content.body  = String(localized: "notif.streak.body \(dogName) \(streak)")
         content.sound = .default
 
-        var components = DateComponents()
-        components.hour   = 20
-        components.minute = 0
+        // Прив'язуємо тригер до конкретної сьогоднішньої дати. Раніше
+        // передавалась лише година/хвилина — тоді UNCalendarNotification
+        // шукає *наступне* входження о 20:00, тобто після 20:00 сьогодні
+        // фаєриться завтра і streak тихо втрачається.
+        let calendar = Calendar.current
+        let now = Date()
+        var target = calendar.dateComponents([.year, .month, .day], from: now)
+        target.hour = 20
+        target.minute = 0
 
-        // Тільки на сьогодні: одноразовий
-        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+        let interval: TimeInterval
+        if let todayEight = calendar.date(from: target), todayEight > now {
+            interval = todayEight.timeIntervalSince(now)
+        } else {
+            // Вже після 20:00 — не мовчимо, нагадуємо за 60 сек.
+            interval = 60
+        }
+
+        let trigger = UNTimeIntervalNotificationTrigger(
+            timeInterval: interval,
+            repeats: false
+        )
         let request = UNNotificationRequest(
             identifier: NotificationID.streakAtRisk,
             content: content,

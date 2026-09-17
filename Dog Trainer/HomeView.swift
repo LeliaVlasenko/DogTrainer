@@ -115,7 +115,9 @@ struct HomeView: View {
         case .puppy:
             return command.difficulty == .beginner
         case .adult:
-            return command.difficulty != .advanced || command.successCount > 2
+            // Adult dogs — beginner + intermediate. Advanced залишається
+            // для behavioral рівня (унікальні спец-команди).
+            return command.difficulty != .advanced
         case .behavioral:
             return command.category == .behavioral || command.difficulty == .beginner
         }

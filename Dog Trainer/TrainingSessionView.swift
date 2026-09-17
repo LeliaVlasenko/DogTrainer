@@ -17,6 +17,7 @@ struct TrainingSessionView: View {
     @State private var results: [CommandResult] = []
     @State private var sessionStart = Date()
     @State private var showSummary = false
+    @State private var hasBeenSaved = false
 
     private var currentCommand: Command? {
         guard currentIndex < commands.count else { return nil }
@@ -71,9 +72,11 @@ struct TrainingSessionView: View {
             attempts: 1
         ))
 
-        // Оновити лічильник команди
+        // Оновити лічильник команди — і одразу зберегти, бо інакше зміна
+        // SwiftData-моделі живе лише в пам'яті і губиться між сесіями.
         if succeeded {
             command.successCount += 1
+            try? modelContext.save()
         }
 
         // Наступна команда або підсумок
@@ -89,7 +92,10 @@ struct TrainingSessionView: View {
     }
 
     private func saveSession() {
-        guard !results.isEmpty else { return }
+        // Guard від дубля: якщо юзер натискає Quit після завершення сесії
+        // (з summary), не хочемо створювати другий TrainingSession в БД.
+        guard !hasBeenSaved, !results.isEmpty else { return }
+        hasBeenSaved = true
         let session = TrainingSession(
             date: sessionStart,
             durationSeconds: Int(Date().timeIntervalSince(sessionStart)),

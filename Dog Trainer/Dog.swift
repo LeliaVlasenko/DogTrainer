@@ -33,9 +33,11 @@ final class Dog {
     /// Кількість днів підряд (streak)
     var currentStreak: Int {
         let calendar = Calendar.current
-        let sortedDates = sessions
-            .map { calendar.startOfDay(for: $0.date) }
-            .sorted(by: >)
+        // Дедуплікуємо по унікальних днях: якщо юзер тренувався двічі за
+        // день, дві sessions мають однаковий startOfDay — без дедупу diff
+        // між ними = 0 і цикл нижче помилково розриває streak.
+        let uniqueDays = Set(sessions.map { calendar.startOfDay(for: $0.date) })
+        let sortedDates = uniqueDays.sorted(by: >)
 
         guard let first = sortedDates.first,
               calendar.isDateInToday(first) || calendar.isDateInYesterday(first)
