@@ -4,12 +4,21 @@ import Charts
 
 struct ProgressView: View {
     @Query private var dogs: [Dog]
-    @Query(sort: \TrainingSession.date, order: .reverse) private var sessions: [TrainingSession]
+    @Query(sort: \TrainingSession.date, order: .reverse) private var allSessions: [TrainingSession]
     @Query private var commands: [Command]
+    @AppStorage(DogSelection.key) private var selectedID: String = ""
 
     @State private var selectedPeriod: ChartPeriod = .week
 
-    private var dog: Dog? { dogs.first }
+    private var dog: Dog? {
+        DogSelection.resolve(from: dogs, selectedIDString: selectedID)
+    }
+
+    // Сесії лише обраної собаки
+    private var sessions: [TrainingSession] {
+        guard let dogID = dog?.id else { return [] }
+        return allSessions.filter { $0.dog?.id == dogID }
+    }
 
     // Сесії за вибраний період
     private var filteredSessions: [TrainingSession] {

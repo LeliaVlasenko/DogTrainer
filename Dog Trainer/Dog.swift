@@ -3,6 +3,8 @@ import SwiftData
 
 @Model
 final class Dog {
+    /// Стабільний UUID для DogSelection та .id(dog.id) в SwiftUI.
+    var id: UUID
     var name: String
     var breed: String
     var birthDate: Date?
@@ -22,6 +24,7 @@ final class Dog {
         birthDate: Date? = nil,
         level: DogLevel = .puppy
     ) {
+        self.id = UUID()
         self.name = name
         self.breed = breed
         self.birthDate = birthDate

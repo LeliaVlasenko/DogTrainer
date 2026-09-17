@@ -8,12 +8,16 @@ struct HomeView: View {
     @Query private var dogs: [Dog]
     @Query private var commands: [Command]
     @Query private var earnedBadges: [EarnedBadge]
+    @AppStorage(DogSelection.key) private var selectedID: String = ""
 
     @State private var todayCommands: [Command] = []
     @State private var showTraining = false
     @State private var showAllBadges = false
+    @State private var showAddDog = false
 
-    private var dog: Dog? { dogs.first }
+    private var dog: Dog? {
+        DogSelection.resolve(from: dogs, selectedIDString: selectedID)
+    }
 
     var body: some View {
         NavigationStack {
@@ -51,6 +55,13 @@ struct HomeView: View {
             .background(Color.appBackground)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                if dogs.count > 1 {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        DogPicker(dogs: dogs, selected: dog) {
+                            showAddDog = true
+                        }
+                    }
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {
                         ProfileView()
@@ -59,6 +70,9 @@ struct HomeView: View {
                             .foregroundStyle(.primary)
                     }
                 }
+            }
+            .sheet(isPresented: $showAddDog) {
+                AddDogSheet()
             }
             .fullScreenCover(isPresented: $showTraining) {
                 if let dog {
@@ -73,6 +87,7 @@ struct HomeView: View {
         }
         .onAppear { refreshTodayCommands() }
         .onChange(of: commands) { refreshTodayCommands() }
+        .onChange(of: selectedID) { refreshTodayCommands() }
     }
 
     // MARK: - Логіка підбору команд

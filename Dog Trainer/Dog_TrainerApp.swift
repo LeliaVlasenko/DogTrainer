@@ -70,7 +70,9 @@ struct Dog_TrainerApp: App {
                     // Міграція команд: додаємо нові з v2+ для існуючих юзерів
                     Command.topUpSeedIfNeeded(in: container.mainContext)
                     let dogs = (try? container.mainContext.fetch(FetchDescriptor<Dog>())) ?? []
-                    await notificationManager.rescheduleAll(dog: dogs.first)
+                    let selectedID = UserDefaults.standard.string(forKey: DogSelection.key) ?? ""
+                    let selected = DogSelection.resolve(from: dogs, selectedIDString: selectedID)
+                    await notificationManager.rescheduleAll(dog: selected)
                 }
         }
         .modelContainer(container)

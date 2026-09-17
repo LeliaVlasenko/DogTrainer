@@ -7,13 +7,16 @@ struct LibraryCommandDetailView: View {
     @Environment(NotificationManager.self) private var notificationManager
     @Environment(AchievementManager.self) private var achievementManager
     @Query private var dogs: [Dog]
+    @AppStorage(DogSelection.key) private var selectedID: String = ""
 
     let command: Command
 
     @State private var showPaywall = false
     @State private var trainingCommand: Command? = nil
 
-    private var dog: Dog? { dogs.first }
+    private var dog: Dog? {
+        DogSelection.resolve(from: dogs, selectedIDString: selectedID)
+    }
 
     private var isLocked: Bool {
         command.isPremium && !subscriptionManager.isPremium

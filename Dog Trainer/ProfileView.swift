@@ -3,15 +3,21 @@ import SwiftData
 import StoreKit
 
 struct ProfileView: View {
+    @Environment(\.modelContext) private var modelContext
     @Environment(SubscriptionManager.self) private var subscriptionManager
     @Environment(NotificationManager.self) private var notificationManager
     @Query private var dogs: [Dog]
+    @AppStorage(DogSelection.key) private var selectedID: String = ""
 
     @State private var showEdit = false
     @State private var showPaywall = false
     @State private var showAvatarGenerator = false
+    @State private var showAddDog = false
+    @State private var pendingDelete: Dog? = nil
 
-    private var dog: Dog? { dogs.first }
+    private var dog: Dog? {
+        DogSelection.resolve(from: dogs, selectedIDString: selectedID)
+    }
 
     var body: some View {
         ScrollView {
@@ -23,6 +29,13 @@ struct ProfileView: View {
                         onGenerateAvatar: { showAvatarGenerator = true }
                     )
                 }
+
+                DogsListSection(
+                    dogs: dogs,
+                    selected: dog,
+                    onAdd: { showAddDog = true },
+                    onDelete: { pendingDelete = $0 }
+                )
 
                 SubscriptionSection(
                     status: subscriptionManager.status,
@@ -59,6 +72,33 @@ struct ProfileView: View {
                 }
             }
         }
+        .sheet(isPresented: $showAddDog) {
+            AddDogSheet()
+        }
+        .alert(
+            String(localized: "profile.dog.delete.title"),
+            isPresented: Binding(
+                get: { pendingDelete != nil },
+                set: { if !$0 { pendingDelete = nil } }
+            ),
+            presenting: pendingDelete
+        ) { dog in
+            Button(String(localized: "profile.dog.delete.confirm"), role: .destructive) {
+                delete(dog)
+            }
+            Button(String(localized: "profile.edit.cancel"), role: .cancel) {}
+        } message: { dog in
+            Text(String(localized: "profile.dog.delete.message \(dog.name)"))
+        }
+    }
+
+    private func delete(_ dog: Dog) {
+        // Якщо видаляємо обрану — фолбек на іншу.
+        if dog.id == self.dog?.id, let fallback = dogs.first(where: { $0.id != dog.id }) {
+            DogSelection.select(fallback)
+        }
+        modelContext.delete(dog)
+        try? modelContext.save()
     }
 }
 
@@ -151,6 +191,74 @@ private struct DogProfileCard: View {
         .padding(20)
         .background(Color.appCardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 18))
+    }
+}
+
+// MARK: - Dogs list section
+
+private struct DogsListSection: View {
+    let dogs: [Dog]
+    let selected: Dog?
+    let onAdd: () -> Void
+    let onDelete: (Dog) -> Void
+
+    var body: some View {
+        SectionCard(title: String(localized: "profile.dogs.title")) {
+            VStack(spacing: 0) {
+                ForEach(dogs) { dog in
+                    Button {
+                        DogSelection.select(dog)
+                    } label: {
+                        HStack(spacing: 12) {
+                            DogAvatar(dog: dog, size: 40)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(dog.name)
+                                    .font(.system(size: 15, weight: .medium))
+                                    .foregroundStyle(.primary)
+                                Text(dog.breed)
+                                    .font(.system(size: 12))
+                                    .foregroundStyle(.secondary)
+                            }
+                            Spacer()
+                            if dog.id == selected?.id {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .foregroundStyle(Color.accentColor)
+                            }
+                        }
+                        .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain)
+                    .swipeActions(edge: .trailing) {
+                        if dogs.count > 1 {
+                            Button(role: .destructive) {
+                                onDelete(dog)
+                            } label: {
+                                Label(String(localized: "profile.dog.delete"), systemImage: "trash")
+                            }
+                        }
+                    }
+                    if dog.id != dogs.last?.id {
+                        Divider().padding(.vertical, 10)
+                    }
+                }
+
+                Divider().padding(.vertical, 10)
+
+                Button(action: onAdd) {
+                    HStack(spacing: 12) {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.system(size: 20))
+                            .foregroundStyle(Color.appSage)
+                        Text(String(localized: "profile.dog.add.title"))
+                            .font(.system(size: 15, weight: .medium))
+                            .foregroundStyle(.primary)
+                        Spacer()
+                    }
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+            }
+        }
     }
 }
 
@@ -251,9 +359,12 @@ private struct SubscriptionSection: View {
 private struct RemindersSection: View {
     @Environment(NotificationManager.self) private var notificationManager
     @Query private var dogs: [Dog]
+    @AppStorage(DogSelection.key) private var selectedID: String = ""
     @AppStorage("notif.enabled") private var enabled = true
 
-    private var dog: Dog? { dogs.first }
+    private var dog: Dog? {
+        DogSelection.resolve(from: dogs, selectedIDString: selectedID)
+    }
 
     private var hourBinding: Binding<Date> {
         Binding(

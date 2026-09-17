@@ -30,7 +30,8 @@ struct StartTrainingIntent: AppIntent {
         let context = container.mainContext
 
         let dogs = try context.fetch(FetchDescriptor<Dog>())
-        guard let dog = dogs.first else {
+        let selectedID = UserDefaults.standard.string(forKey: DogSelection.key) ?? ""
+        guard let dog = DogSelection.resolve(from: dogs, selectedIDString: selectedID) else {
             throw IntentError.noDogProfile
         }
 
