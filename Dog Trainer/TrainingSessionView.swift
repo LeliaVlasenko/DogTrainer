@@ -43,6 +43,9 @@ struct TrainingSessionView: View {
                     ) { succeeded in
                         handleResult(command: command, succeeded: succeeded)
                     }
+                    // Свіжий інстанс на кожну команду — інакше @State (currentStep,
+                    // timerSeconds, clickCount) переносяться з попередньої команди.
+                    .id(command.id)
                 }
             }
             .toolbar {
