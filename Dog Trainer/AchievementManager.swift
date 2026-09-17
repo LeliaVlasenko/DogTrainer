@@ -22,7 +22,11 @@ final class AchievementManager {
         earnedBadges: [EarnedBadge],
         context: ModelContext
     ) {
-        let earnedIds = Set(earnedBadges.map { $0.badgeId })
+        // Читаємо свіжі бейджі з контексту, а не з @Query-snapshot.
+        // Snapshot може відставати між швидкими викликами (дві сесії підряд),
+        // і той самий бейдж буде вставлений двічі.
+        let fresh = (try? context.fetch(FetchDescriptor<EarnedBadge>())) ?? earnedBadges
+        let earnedIds = Set(fresh.map { $0.badgeId })
         var newBadges: [BadgeDefinition] = []
 
         // Streak badges

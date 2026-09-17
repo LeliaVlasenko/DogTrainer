@@ -13,6 +13,12 @@ struct SessionSummaryView: View {
     private var totalCount: Int { results.count }
     private var successRate: Int { totalCount > 0 ? Int(Double(successCount) / Double(totalCount) * 100) : 0 }
 
+    /// Streak, який буде після збереження цієї сесії. Сама сесія ще не в БД,
+    /// тому dog.currentStreak ще не враховує сьогоднішнє тренування.
+    private var projectedStreak: Int {
+        dog.trainedToday ? dog.currentStreak : dog.currentStreak + 1
+    }
+
     private var summaryIcon: BrandIconName {
         switch successRate {
         case 100:      return .trophy
@@ -70,7 +76,7 @@ struct SessionSummaryView: View {
                         color: .blue
                     )
                     StatCard(
-                        value: dog.currentStreak > 0 ? "\(dog.currentStreak)🔥" : "1",
+                        value: "\(projectedStreak)🔥",
                         label: String(localized: "summary.stat.streak"),
                         icon: "flame",
                         color: .orange

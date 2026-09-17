@@ -182,9 +182,10 @@ final class SubscriptionManager {
     private func fetchProducts() async {
         do {
             let fetched = try await Product.products(for: ProductID.all)
-            // Сортуємо: monthly першим
-            products = fetched.sorted { lhs, rhs in
-                lhs.id == ProductID.monthly
+            // Явний порядок — старий sort() по boolean давав нестабільний
+            // результат якщо App Store повертає продукти в будь-якому порядку.
+            products = ProductID.all.compactMap { id in
+                fetched.first { $0.id == id }
             }
             productsFetchError = nil
         } catch {
