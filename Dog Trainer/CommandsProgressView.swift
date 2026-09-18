@@ -82,9 +82,7 @@ struct CommandsProgressView: View {
                 }
             }
         }
-        .padding(16)
-        .background(Color.appCardBackground)
-        .clipShape(RoundedRectangle(cornerRadius: 18))
+        .cardStyle(radius: 18)
     }
 }
 

@@ -161,9 +161,7 @@ struct LibraryCommandRow: View {
                     .font(.system(size: 12))
                     .foregroundStyle(Color.secondary.opacity(0.4))
             }
-            .padding(14)
-            .background(Color.appCardBackground)
-            .clipShape(RoundedRectangle(cornerRadius: 14))
+            .cardStyle(padding: 14)
             .opacity(isLocked ? 0.7 : 1.0)
         }
         .buttonStyle(.plain)
@@ -194,8 +192,6 @@ struct LibraryEmptyView: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .padding(40)
-        .background(Color.appCardBackground)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .cardStyle(padding: 40, radius: 16)
     }
 }

@@ -92,9 +92,7 @@ struct ActivityChartView: View {
                 }
             }
         }
-        .padding(16)
-        .background(Color.appCardBackground)
-        .clipShape(RoundedRectangle(cornerRadius: 18))
+        .cardStyle(radius: 18)
     }
 
     private var maxY: Int {

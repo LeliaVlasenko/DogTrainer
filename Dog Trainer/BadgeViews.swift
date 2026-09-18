@@ -55,9 +55,7 @@ private struct BadgeToast: View {
                 .foregroundStyle(.secondary)
                 .onTapGesture { onDismiss() }
         }
-        .padding(16)
-        .background(Color.appCardBackground)
-        .clipShape(RoundedRectangle(cornerRadius: 18))
+        .cardStyle(radius: 18)
         .shadow(color: .black.opacity(0.08), radius: 12, y: 4)
         .padding(.horizontal, 16)
         .onAppear { appeared = true }

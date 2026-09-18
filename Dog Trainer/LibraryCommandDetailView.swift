@@ -70,9 +70,7 @@ struct LibraryCommandDetailView: View {
                         }
                     }
                     .frame(maxWidth: .infinity)
-                    .padding(20)
-                    .background(Color.appCardBackground)
-                    .clipShape(RoundedRectangle(cornerRadius: 18))
+                    .cardStyle(padding: 20, radius: 18)
 
                     // Progress (якщо не locked)
                     if !isLocked && command.successCount > 0 {
@@ -101,9 +99,7 @@ struct LibraryCommandDetailView: View {
                             }
                             .frame(height: 8)
                         }
-                        .padding(16)
-                        .background(Color.appCardBackground)
-                        .clipShape(RoundedRectangle(cornerRadius: 14))
+                        .cardStyle()
                     }
 
                     // Description
@@ -117,9 +113,7 @@ struct LibraryCommandDetailView: View {
                             .fixedSize(horizontal: false, vertical: true)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(16)
-                    .background(Color.appCardBackground)
-                    .clipShape(RoundedRectangle(cornerRadius: 14))
+                    .cardStyle()
 
                     // Steps
                     if !command.steps.isEmpty {
@@ -153,9 +147,7 @@ struct LibraryCommandDetailView: View {
                                 }
                             }
                         }
-                        .padding(16)
-                        .background(Color.appCardBackground)
-                        .clipShape(RoundedRectangle(cornerRadius: 14))
+                        .cardStyle()
                     }
 
                     // CTA

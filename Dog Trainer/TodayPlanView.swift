@@ -97,9 +97,7 @@ struct CommandRowView: View {
                 .foregroundStyle(difficultyFg(command.difficulty))
                 .clipShape(Capsule())
         }
-        .padding(14)
-        .background(Color.appCardBackground)
-        .clipShape(RoundedRectangle(cornerRadius: 14))
+        .cardStyle(padding: 14)
         .opacity(trainedToday ? 0.6 : 1.0)
         .overlay(
             trainedToday
@@ -154,8 +152,6 @@ private struct EmptyCommandsView: View {
                 .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity)
-        .padding(32)
-        .background(Color.appCardBackground)
-        .clipShape(RoundedRectangle(cornerRadius: 14))
+        .cardStyle(padding: 32)
     }
 }

@@ -105,9 +105,7 @@ struct SessionSummaryView: View {
                                 .font(.system(size: 12))
                                 .foregroundStyle(result.succeeded ? Color.appSage : .secondary)
                         }
-                        .padding(12)
-                        .background(Color.appCardBackground)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .cardStyle(padding: 12, radius: 12)
                     }
                 }
                 .opacity(appeared ? 1 : 0)

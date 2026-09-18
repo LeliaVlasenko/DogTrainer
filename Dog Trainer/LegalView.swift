@@ -77,7 +77,7 @@ struct LegalView: View {
                     HeroBlock(document: document)
 
                     ForEach(document.sections) { section in
-                        SectionCard(title: section.title, text: section.text)
+                        LegalSectionCard(title: section.title, text: section.text)
                     }
 
                     FooterBlock(lastUpdated: Self.lastUpdated)
@@ -134,7 +134,7 @@ private struct HeroBlock: View {
 
 // MARK: - Section card
 
-private struct SectionCard: View {
+private struct LegalSectionCard: View {
     let title: String
     let text: String
 

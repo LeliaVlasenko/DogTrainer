@@ -188,9 +188,7 @@ private struct DogProfileCard: View {
             .buttonStyle(.plain)
         }
         .frame(maxWidth: .infinity)
-        .padding(20)
-        .background(Color.appCardBackground)
-        .clipShape(RoundedRectangle(cornerRadius: 18))
+        .cardStyle(padding: 20, radius: 18)
     }
 }
 
@@ -532,27 +530,6 @@ private struct InfoRow: View {
                     .font(.system(size: 12))
                     .foregroundStyle(Color.secondary.opacity(0.5))
             }
-        }
-    }
-}
-
-// MARK: - Section card
-
-private struct SectionCard<Content: View>: View {
-    let title: String
-    @ViewBuilder let content: () -> Content
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text(title)
-                .font(.system(size: 13, weight: .medium))
-                .foregroundStyle(.secondary)
-                .padding(.horizontal, 4)
-
-            content()
-                .padding(16)
-                .background(Color.appCardBackground)
-                .clipShape(RoundedRectangle(cornerRadius: 14))
         }
     }
 }

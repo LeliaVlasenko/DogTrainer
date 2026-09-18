@@ -48,9 +48,7 @@ struct AllBadgesView: View {
                     .padding(.horizontal, 40)
                 }
                 .frame(maxWidth: .infinity)
-                .padding(20)
-                .background(Color.appCardBackground)
-                .clipShape(RoundedRectangle(cornerRadius: 18))
+                .cardStyle(padding: 20, radius: 18)
 
                 BadgeSection(
                     title: String(localized: "badges.section.streak"),

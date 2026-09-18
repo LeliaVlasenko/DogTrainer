@@ -333,9 +333,7 @@ private struct PaywallFeaturesView: View {
                         .font(.system(size: 12, weight: .bold))
                         .foregroundStyle(Color.appSage)
                 }
-                .padding(14)
-                .background(Color.appCardBackground)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .cardStyle(padding: 14, radius: 12)
             }
         }
     }
@@ -418,9 +416,7 @@ private struct ProductCard: View {
                     }
                 }
             }
-            .padding(16)
-            .background(Color.appCardBackground)
-            .clipShape(RoundedRectangle(cornerRadius: 14))
+            .cardStyle()
             .overlay(
                 RoundedRectangle(cornerRadius: 14)
                     .strokeBorder(isSelected ? Color.accentColor : Color.clear, lineWidth: 2)
@@ -622,9 +618,7 @@ private struct PurchaseSuccessOverlay: View {
                     .foregroundStyle(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 14))
             }
-            .padding(28)
-            .background(Color.appCardBackground)
-            .clipShape(RoundedRectangle(cornerRadius: 24))
+            .cardStyle(padding: 28, radius: 24)
             .padding(32)
             .opacity(appeared ? 1 : 0)
             .animation(.easeOut(duration: 0.3), value: appeared)

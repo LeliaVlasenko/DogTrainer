@@ -50,8 +50,6 @@ struct DogHeaderView: View {
                 .frame(width: 48)
             }
         }
-        .padding(16)
-        .background(Color.appCardBackground)
-        .clipShape(RoundedRectangle(cornerRadius: 18))
+        .cardStyle(radius: 18)
     }
 }

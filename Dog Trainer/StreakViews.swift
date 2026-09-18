@@ -124,9 +124,7 @@ struct RecentBadgesRow: View {
                     Spacer()
                 }
             }
-            .padding(14)
-            .background(Color.appCardBackground)
-            .clipShape(RoundedRectangle(cornerRadius: 14))
+            .cardStyle(padding: 14)
         }
     }
 }

@@ -98,9 +98,7 @@ private struct LevelCard: View {
                     .font(.system(size: 22))
                     .foregroundStyle(isSelected ? Color.accentColor : Color.secondary.opacity(0.4))
             }
-            .padding(16)
-            .background(Color.appCardBackground)
-            .clipShape(RoundedRectangle(cornerRadius: 16))
+            .cardStyle(radius: 16)
             .overlay(
                 RoundedRectangle(cornerRadius: 16)
                     .strokeBorder(
