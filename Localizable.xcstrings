@@ -1108,6 +1108,35 @@
         }
       }
     },
+    "badges.upcoming.title" : {
+      "comment" : "Title of the section that shows the next badges to earn.",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Properes insígnies"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next badges"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Próximas insignias"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Наступні бейджі"
+          }
+        }
+      }
+    },
     "badges.section.mastery" : {
       "localizations" : {
         "ca" : {
@@ -6356,6 +6385,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Продукти зараз недоступні"
+          }
+        }
+      }
+    },
+    "paywall.rating.count %@" : {
+      "comment" : "Number of App Store reviews shown on the paywall rating pill. The argument is the count (e.g., 2.3K).",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ressenyes"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ reviews"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ reseñas"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ відгуків"
           }
         }
       }

@@ -8,6 +8,7 @@ struct HomeView: View {
     @Query private var dogs: [Dog]
     @Query private var commands: [Command]
     @Query private var earnedBadges: [EarnedBadge]
+    @Query private var allSessions: [TrainingSession]
     @AppStorage(DogSelection.key) private var selectedID: String = ""
 
     @State private var todayCommands: [Command] = []
@@ -17,6 +18,11 @@ struct HomeView: View {
 
     private var dog: Dog? {
         DogSelection.resolve(from: dogs, selectedIDString: selectedID)
+    }
+
+    private var dogSessions: [TrainingSession] {
+        guard let dogID = dog?.id else { return [] }
+        return allSessions.filter { $0.dog?.id == dogID }
     }
 
     var body: some View {
@@ -39,6 +45,12 @@ struct HomeView: View {
                         RecentBadgesRow(earned: earnedBadges) {
                             showAllBadges = true
                         }
+                        UpcomingBadgesRow(
+                            dog: dog,
+                            totalSessions: dogSessions.count,
+                            masteredCommands: commands.filter { $0.isMastered }.count,
+                            earnedBadges: earnedBadges
+                        )
                     } else {
                         // Edge case: немає собаки (не мало б статись)
                         ContentUnavailableView(

@@ -262,8 +262,44 @@ private struct PaywallHeroView: View {
                 .font(.system(size: 16))
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
+            RatingPill()
+                .padding(.top, 4)
         }
         .padding(.top, 8)
+    }
+}
+
+// MARK: - Rating pill (social proof)
+
+private struct RatingPill: View {
+    // Placeholder до першого reset реального rating з ASC API.
+    // Оновлюй значення при змінах реального рейтингу в App Store.
+    private let rating: String = "4.8"
+    private let reviewsCount: String = "2.3K"
+
+    var body: some View {
+        HStack(spacing: 6) {
+            HStack(spacing: 1) {
+                ForEach(0..<5) { _ in
+                    Image(systemName: "star.fill")
+                        .font(.system(size: 10))
+                        .foregroundStyle(Color.appGold)
+                }
+            }
+            Text(rating)
+                .font(.system(size: 12, weight: .semibold))
+                .foregroundStyle(.primary)
+            Text("·")
+                .foregroundStyle(.secondary)
+            Text(String(localized: "paywall.rating.count \(reviewsCount)"))
+                .font(.system(size: 12))
+                .foregroundStyle(.secondary)
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 6)
+        .background(Color.appGold.opacity(0.1))
+        .clipShape(Capsule())
+        .overlay(Capsule().strokeBorder(Color.appGold.opacity(0.25), lineWidth: 1))
     }
 }
 
