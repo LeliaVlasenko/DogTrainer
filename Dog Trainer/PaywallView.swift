@@ -71,30 +71,14 @@ struct PaywallView: View {
                         .background(Color.appCardBackground)
                         .clipShape(RoundedRectangle(cornerRadius: 14))
                     } else {
-                        VStack(spacing: 10) {
-                            Image(systemName: "exclamationmark.triangle")
-                                .font(.system(size: 24))
-                                .foregroundStyle(Color.appFlame)
-                            Text(String(localized: "paywall.products.unavailable"))
-                                .font(.system(size: 14, weight: .medium))
-                                .multilineTextAlignment(.center)
-                            Text(String(localized: "paywall.products.retry.hint"))
-                                .font(.system(size: 12))
-                                .foregroundStyle(.secondary)
-                                .multilineTextAlignment(.center)
-                            Button {
-                                Task { await loadProducts() }
-                            } label: {
-                                Label(String(localized: "paywall.products.retry"),
-                                      systemImage: "arrow.clockwise")
-                                    .font(.system(size: 13, weight: .medium))
-                            }
-                            .padding(.top, 4)
+                        ErrorRecoveryView(
+                            title: String(localized: "paywall.products.unavailable"),
+                            message: subscriptionManager.productsFetchError
+                                     ?? String(localized: "paywall.products.retry.hint"),
+                            retryTitle: String(localized: "paywall.products.retry")
+                        ) {
+                            Task { await loadProducts() }
                         }
-                        .padding(20)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.appCardBackground)
-                        .clipShape(RoundedRectangle(cornerRadius: 14))
                     }
 
                     // Debug panel — показується коли продукти не завантажились

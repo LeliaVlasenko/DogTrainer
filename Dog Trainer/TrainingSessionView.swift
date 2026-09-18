@@ -47,6 +47,11 @@ struct TrainingSessionView: View {
                     // Свіжий інстанс на кожну команду — інакше @State (currentStep,
                     // timerSeconds, clickCount) переносяться з попередньої команди.
                     .id(command.id)
+                    // Плавний перехід замість різкого swap коли міняється команда.
+                    .transition(.asymmetric(
+                        insertion: .opacity.combined(with: .move(edge: .trailing)),
+                        removal: .opacity.combined(with: .move(edge: .leading))
+                    ))
                 }
             }
             .toolbar {
@@ -84,11 +89,11 @@ struct TrainingSessionView: View {
 
         // Наступна команда або підсумок
         if currentIndex + 1 < commands.count {
-            withAnimation(.easeInOut(duration: 0.3)) {
+            withAnimation(.easeInOut(duration: 0.35)) {
                 currentIndex += 1
             }
         } else {
-            withAnimation {
+            withAnimation(.easeInOut(duration: 0.35)) {
                 showSummary = true
             }
         }

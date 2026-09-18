@@ -9,6 +9,7 @@ struct EditDogView: View {
 
     @State private var hasBirthDate: Bool
     @State private var birthDate: Date
+    @State private var showSavedToast = false
     @FocusState private var breedFieldFocused: Bool
 
     private let popularBreeds = [
@@ -117,10 +118,16 @@ struct EditDogView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(String(localized: "profile.edit.done")) {
                         save()
-                        dismiss()
                     }
                     .fontWeight(.semibold)
                     .disabled(!canSave)
+                }
+            }
+            .overlay(alignment: .top) {
+                if showSavedToast {
+                    SavedToast()
+                        .padding(.top, 8)
+                        .transition(.move(edge: .top).combined(with: .opacity))
                 }
             }
         }
@@ -138,6 +145,30 @@ struct EditDogView: View {
         dog.breed = dog.breed.trimmingCharacters(in: .whitespaces)
         dog.birthDate = hasBirthDate ? birthDate : nil
         try? modelContext.save()
+
+        // Показуємо toast → чекаємо 0.8с → закриваємо аркуш.
+        withAnimation(.spring(response: 0.4)) { showSavedToast = true }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            dismiss()
+        }
+    }
+}
+
+// MARK: - Saved toast
+
+private struct SavedToast: View {
+    var body: some View {
+        HStack(spacing: 8) {
+            Image(systemName: "checkmark.circle.fill")
+                .foregroundStyle(Color.appSage)
+            Text(String(localized: "profile.edit.saved"))
+                .font(.system(size: 14, weight: .medium))
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 10)
+        .background(.regularMaterial, in: Capsule())
+        .overlay(Capsule().strokeBorder(Color.appSage.opacity(0.3), lineWidth: 1))
+        .shadow(color: .black.opacity(0.1), radius: 8, y: 2)
     }
 }
 

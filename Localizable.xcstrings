@@ -7208,6 +7208,35 @@
         }
       }
     },
+    "profile.edit.saved" : {
+      "comment" : "Confirmation toast shown after saving dog changes.",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Canvis desats"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Changes saved"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambios guardados"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зміни збережено"
+          }
+        }
+      }
+    },
     "profile.edit.level" : {
       "localizations" : {
         "ca" : {
