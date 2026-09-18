@@ -99,26 +99,13 @@ struct PaywallView: View {
 
                     // CTA
                     VStack(spacing: 12) {
-                        Button {
+                        PrimaryButton(
+                            ctaTitle,
+                            isLoading: subscriptionManager.isPurchasing,
+                            isDisabled: !canPurchase
+                        ) {
                             Task { await startPurchase() }
-                        } label: {
-                            Group {
-                                if subscriptionManager.isPurchasing {
-                                    SwiftUI.ProgressView()
-                                        .tint(.white)
-                                } else {
-                                    Text(ctaTitle)
-                                        .font(.system(size: 17, weight: .semibold))
-                                }
-                            }
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 56)
-                            .background(canPurchase ? Color.accentColor : Color.secondary.opacity(0.3))
-                            .foregroundStyle(.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 16))
                         }
-                        .disabled(!canPurchase)
-                        .animation(.easeInOut(duration: 0.2), value: canPurchase)
 
                         // Trial label — показуємо тільки якщо юзер реально має право
                         if trialEligible {

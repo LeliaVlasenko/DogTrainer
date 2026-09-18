@@ -46,19 +46,13 @@ struct AddDogSheet: View {
                     .animation(.easeInOut(duration: 0.3), value: currentStep)
 
                     VStack(spacing: 12) {
-                        Button(action: advance) {
-                            Text(currentStep == 2
-                                 ? String(localized: "profile.dog.add.save")
-                                 : String(localized: "onboarding.next"))
-                                .font(.system(size: 17, weight: .semibold))
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 54)
-                                .background(canAdvance ? Color.accentColor : Color.secondary.opacity(0.2))
-                                .foregroundStyle(canAdvance ? .white : Color.secondary)
-                                .clipShape(RoundedRectangle(cornerRadius: 16))
-                        }
-                        .disabled(!canAdvance)
-                        .animation(.easeInOut(duration: 0.2), value: canAdvance)
+                        PrimaryButton(
+                            currentStep == 2
+                                ? String(localized: "profile.dog.add.save")
+                                : String(localized: "onboarding.next"),
+                            isDisabled: !canAdvance,
+                            action: advance
+                        )
 
                         if currentStep > 0 {
                             Button(String(localized: "onboarding.back")) {

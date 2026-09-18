@@ -474,15 +474,7 @@ private struct BottomActionBar: View {
             Divider()
             HStack(spacing: 12) {
                 // Skip
-                Button(action: onSkip) {
-                    Text(String(localized: "lesson.skip"))
-                        .font(.system(size: 15, weight: .medium))
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .background(Color.secondary.opacity(0.12))
-                        .foregroundStyle(.secondary)
-                        .clipShape(RoundedRectangle(cornerRadius: 14))
-                }
+                SecondaryButton(String(localized: "lesson.skip"), action: onSkip)
 
                 // Success
                 Button(action: onSuccess) {
