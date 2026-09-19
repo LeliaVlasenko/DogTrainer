@@ -107,14 +107,8 @@ struct HomeView: View {
     private func refreshTodayCommands() {
         guard let dog else { return }
 
-        // Команди що підходять для рівня і ще не вивчені
-        let available = commands.filter { cmd in
-            cmd.isUnlocked &&
-            !cmd.isMastered &&
-            isCompatible(cmd, with: dog.level)
-        }
-
-        // Якщо сьогодні вже тренувались — показуємо ті самі команди
+        // Якщо сьогодні вже тренувались — синхронізуємо з останньою сесією.
+        // Це дешева операція, safe виконувати при кожному апдейті.
         if dog.trainedToday, let lastSession = dog.sessions
             .filter({ Calendar.current.isDateInToday($0.date) })
             .sorted(by: { $0.date > $1.date })
@@ -122,6 +116,23 @@ struct HomeView: View {
             let ids = Set(lastSession.commandResults.map { $0.commandId })
             todayCommands = commands.filter { ids.contains($0.id) }
             return
+        }
+
+        // Якщо вже є валідний план на сьогодні (усі команди ще існують) —
+        // НЕ перешафлюємо. Інакше successCount++ під час сесії міг би
+        // переставити картки в UI.
+        if !todayCommands.isEmpty {
+            let stillValid = todayCommands.allSatisfy { picked in
+                commands.contains(where: { $0.id == picked.id })
+            }
+            if stillValid { return }
+        }
+
+        // Команди що підходять для рівня і ще не вивчені
+        let available = commands.filter { cmd in
+            cmd.isUnlocked &&
+            !cmd.isMastered &&
+            isCompatible(cmd, with: dog.level)
         }
 
         // Пріоритет: команди з частковим прогресом → нові

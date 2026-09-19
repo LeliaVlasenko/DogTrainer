@@ -1108,35 +1108,6 @@
         }
       }
     },
-    "badges.upcoming.title" : {
-      "comment" : "Title of the section that shows the next badges to earn.",
-      "localizations" : {
-        "ca" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Properes insígnies"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Next badges"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Próximas insignias"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Наступні бейджі"
-          }
-        }
-      }
-    },
     "badges.section.mastery" : {
       "localizations" : {
         "ca" : {
@@ -1273,6 +1244,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Бейджі"
+          }
+        }
+      }
+    },
+    "badges.upcoming.title" : {
+      "comment" : "Title of the section that shows the next badges to earn.",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Properes insígnies"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next badges"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Próximas insignias"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Наступні бейджі"
           }
         }
       }
@@ -3721,6 +3721,35 @@
         }
       }
     },
+    "intent.error.no_command" : {
+      "comment" : "Siri error when no unlocked commands exist for the quick log intent.",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Encara no tens comandes desbloquejades."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You don't have any commands unlocked yet."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aún no tienes comandos desbloqueados."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "У тебе ще немає розблокованих команд."
+          }
+        }
+      }
+    },
     "intent.error.no_dog" : {
       "localizations" : {
         "ca" : {
@@ -4025,6 +4054,151 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Показати прогрес тренувань"
+          }
+        }
+      }
+    },
+    "intent.quicklog.description" : {
+      "comment" : "Description for the Siri quick-log intent.",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registra ràpidament un entrenament exitós sense obrir l'app."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quickly logs a successful training without opening the app."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registra rápidamente un entrenamiento exitoso sin abrir la app."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Швидко реєструє успішне тренування без відкриття застосунку."
+          }
+        }
+      }
+    },
+    "intent.quicklog.dialog %@ %@" : {
+      "comment" : "Siri dialog after quick log. %1$@ is the command title, %2$@ is the dog name.",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fet! He marcat un %1$@ per a %2$@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done! Marked one %1$@ for %2$@."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¡Listo! Marqué un %1$@ para %2$@."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Готово! Записала %1$@ для %2$@."
+          }
+        }
+      }
+    },
+    "intent.quicklog.short" : {
+      "comment" : "Short title shown in Shortcuts app.",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registre ràpid"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick log"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registro rápido"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Швидкий запис"
+          }
+        }
+      }
+    },
+    "intent.quicklog.summary" : {
+      "comment" : "Parameter summary shown when configuring the shortcut.",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registra un entrenament exitós"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log a successful training"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registra un entrenamiento exitoso"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записати успішне тренування"
+          }
+        }
+      }
+    },
+    "intent.quicklog.title" : {
+      "comment" : "Title of the Siri quick-log intent.",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registre ràpid"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick log"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registro rápido"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Швидкий запис"
           }
         }
       }
@@ -5554,25 +5728,25 @@
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Coneix el bàsic, llest per a més"
+            "value" : "Més d'1 any — nous trucs i habilitats més afinades"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Knows the basics, ready for more"
+            "value" : "1+ years — new tricks and sharper skills"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Conoce lo básico, listo para más"
+            "value" : "Más de 1 año — nuevos trucos y habilidades más afinadas"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Знає базу, готовий до більшого"
+            "value" : "1+ рік — нові трюки і глибша майстерність"
           }
         }
       }
@@ -5582,25 +5756,25 @@
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Necessita ajuda amb problemes de comportament"
+            "value" : "Ansietat, reactivitat o por — comandes especialitzades i gentils"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Needs help with specific behavior issues"
+            "value" : "Anxiety, reactivity or fear — gentle, specialised commands"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Necesita ayuda con problemas de comportamiento"
+            "value" : "Ansiedad, reactividad o miedo — comandos suaves y especializados"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Потребує допомоги з поведінкою"
+            "value" : "Тривога, реактивність або страх — м'які спецкоманди"
           }
         }
       }
@@ -5610,25 +5784,25 @@
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Menor d'1 any, tot just comença"
+            "value" : "Menys d'1 any — construïm bons hàbits des del principi"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Under 1 year old, just starting out"
+            "value" : "Under 1 year — building good habits early"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Menor de 1 año, recién empieza"
+            "value" : "Menos de 1 año — construimos buenos hábitos desde el principio"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "До 1 року, тільки починає"
+            "value" : "До 1 року — закладаємо звички з першого дня"
           }
         }
       }
@@ -7266,35 +7440,6 @@
         }
       }
     },
-    "profile.edit.saved" : {
-      "comment" : "Confirmation toast shown after saving dog changes.",
-      "localizations" : {
-        "ca" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Canvis desats"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Changes saved"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cambios guardados"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Зміни збережено"
-          }
-        }
-      }
-    },
     "profile.edit.level" : {
       "localizations" : {
         "ca" : {
@@ -7347,6 +7492,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Кличка"
+          }
+        }
+      }
+    },
+    "profile.edit.saved" : {
+      "comment" : "Confirmation toast shown after saving dog changes.",
+      "localizations" : {
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Canvis desats"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Changes saved"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambios guardados"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зміни збережено"
           }
         }
       }
@@ -8280,25 +8454,25 @@
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sense dades encara"
+            "value" : "Preparats per veure el progrés?"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No data yet"
+            "value" : "Ready to see progress?"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sin datos todavía"
+            "value" : "¿Listos para ver progreso?"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Поки немає даних"
+            "value" : "Готові побачити прогрес?"
           }
         }
       }
@@ -8308,25 +8482,25 @@
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Completa la primera sessió per veure estadístiques aquí."
+            "value" : "Ves a la pestanya Home i comença la primera sessió — dibuixarem el progrés aquí."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Complete your first training session to see stats here."
+            "value" : "Head to the Home tab and start your first session — we'll chart your progress right here."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Completa tu primera sesión para ver estadísticas aquí."
+            "value" : "Ve a la pestaña Home y empieza tu primera sesión — trazaremos tu progreso aquí."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Заверши першу сесію, щоб побачити статистику."
+            "value" : "Перейди на вкладку Home і почни першу сесію — тут з'явиться графік прогресу."
           }
         }
       }

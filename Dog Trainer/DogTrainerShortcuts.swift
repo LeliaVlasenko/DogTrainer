@@ -46,5 +46,23 @@ struct DogTrainerShortcuts: AppShortcutsProvider {
             shortTitle: "intent.progress.short",
             systemImageName: "chart.bar.fill"
         )
+
+        AppShortcut(
+            intent: QuickLogIntent(),
+            phrases: [
+                // EN
+                "Log a training with \(.applicationName)",
+                "Quick log in \(.applicationName)",
+                "Mark one training in \(.applicationName)",
+                // ES
+                "Registrar entrenamiento en \(.applicationName)",
+                "Anotar entrenamiento en \(.applicationName)",
+                // CA
+                "Registrar entrenament a \(.applicationName)",
+                "Anotar entrenament a \(.applicationName)"
+            ],
+            shortTitle: "intent.quicklog.short",
+            systemImageName: "checkmark.circle.fill"
+        )
     }
 }
