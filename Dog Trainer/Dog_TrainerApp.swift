@@ -16,6 +16,7 @@ struct Dog_TrainerApp: App {
     @State private var subscriptionManager = SubscriptionManager()
     @State private var notificationManager = NotificationManager()
     @State private var achievementManager = AchievementManager()
+    @State private var watchBridge = WatchConnectivityBridge.shared
 
     init() {
         let schema = Schema([Dog.self, Command.self, TrainingSession.self, EarnedBadge.self])
@@ -73,6 +74,9 @@ struct Dog_TrainerApp: App {
                     let selectedID = UserDefaults.standard.string(forKey: DogSelection.key) ?? ""
                     let selected = DogSelection.resolve(from: dogs, selectedIDString: selectedID)
                     await notificationManager.rescheduleAll(dog: selected)
+                    // Даємо Watch-мосту доступ до SwiftData після init.
+                    watchBridge.modelContainer = container
+                    watchBridge.pushSnapshot()
                 }
         }
         .modelContainer(container)

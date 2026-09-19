@@ -123,6 +123,9 @@ struct TrainingSessionView: View {
         // Donate shortcut — Siri вчиться на частоті використання
         donateTrainingShortcut(dogName: dog.name)
 
+        // Штовхаємо свіжий snapshot на Watch (якщо парований).
+        WatchConnectivityBridge.shared.pushSnapshot()
+
         // Перепланувати нагадування (зняти streak-at-risk на сьогодні)
         Task { await notificationManager.rescheduleAll(dog: dog) }
 
