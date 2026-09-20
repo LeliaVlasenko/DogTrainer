@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A74DDB072FE098D600154946 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A74DDB062FE098D600154946 /* Localizable.xcstrings */; };
 		A793FE73305E563600717BA8 /* Dog Academy Watch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A793FE53305E563500717BA8 /* Dog Academy Watch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A7BCB87D305FEF7800839BCF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A74DDB062FE098D600154946 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -405,6 +406,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7BCB87D305FEF7800839BCF /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
