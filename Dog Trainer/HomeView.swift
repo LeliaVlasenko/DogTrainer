@@ -5,6 +5,7 @@ struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(NotificationManager.self) private var notificationManager
     @Environment(AchievementManager.self) private var achievementManager
+    @Environment(SubscriptionManager.self) private var subscriptionManager
     @Query private var dogs: [Dog]
     @Query private var commands: [Command]
     @Query private var earnedBadges: [EarnedBadge]
@@ -100,6 +101,7 @@ struct HomeView: View {
         .onAppear { refreshTodayCommands() }
         .onChange(of: commands) { refreshTodayCommands() }
         .onChange(of: selectedID) { refreshTodayCommands() }
+        .onChange(of: subscriptionManager.isPremium) { refreshTodayCommands() }
     }
 
     // MARK: - Логіка підбору команд
@@ -118,21 +120,25 @@ struct HomeView: View {
             return
         }
 
-        // Якщо вже є валідний план на сьогодні (усі команди ще існують) —
-        // НЕ перешафлюємо. Інакше successCount++ під час сесії міг би
-        // переставити картки в UI.
+        // Якщо вже є валідний план на сьогодні (усі команди ще існують і
+        // доступні для поточного стану підписки) — НЕ перешафлюємо. Інакше
+        // successCount++ під час сесії міг би переставити картки в UI.
         if !todayCommands.isEmpty {
             let stillValid = todayCommands.allSatisfy { picked in
-                commands.contains(where: { $0.id == picked.id })
+                commands.contains(where: { $0.id == picked.id }) &&
+                (subscriptionManager.isPremium || !picked.isPremium)
             }
             if stillValid { return }
         }
 
-        // Команди що підходять для рівня і ще не вивчені
+        // Команди що підходять для рівня і ще не вивчені. Premium-команди
+        // виключаємо для юзерів без підписки, інакше вони потрапляють у план
+        // і кнопка Start training відкриває їх повз paywall.
         let available = commands.filter { cmd in
             cmd.isUnlocked &&
             !cmd.isMastered &&
-            isCompatible(cmd, with: dog.level)
+            isCompatible(cmd, with: dog.level) &&
+            (subscriptionManager.isPremium || !cmd.isPremium)
         }
 
         // Пріоритет: команди з частковим прогресом → нові

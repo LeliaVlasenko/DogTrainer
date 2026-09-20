@@ -10,6 +10,7 @@ struct EditDogView: View {
     @State private var hasBirthDate: Bool
     @State private var birthDate: Date
     @State private var showSavedToast = false
+    @State private var showRemoveSheet = false
     @FocusState private var breedFieldFocused: Bool
 
     private let popularBreeds = [
@@ -97,14 +98,24 @@ struct EditDogView: View {
                 Section(String(localized: "profile.edit.section.level")) {
                     Picker(String(localized: "profile.edit.level"), selection: $dog.level) {
                         ForEach(DogLevel.allCases, id: \.rawValue) { level in
-                            HStack(spacing: 6) {
-                                BrandIcon(level.iconName, size: 18)
-                                Text(level.localizedTitle)
-                            }
-                            .tag(level)
+                            Text(level.localizedTitle)
+                                .tag(level)
                         }
                     }
                     .pickerStyle(.menu)
+                }
+
+                // MARK: Remove
+                Section {
+                    Button(role: .destructive) {
+                        showRemoveSheet = true
+                    } label: {
+                        HStack(spacing: 10) {
+                            Image(systemName: "trash")
+                            Text(String(localized: "profile.dog.delete"))
+                            Spacer()
+                        }
+                    }
                 }
             }
             .navigationTitle(String(localized: "profile.edit.title"))
@@ -130,6 +141,25 @@ struct EditDogView: View {
                         .transition(.move(edge: .top).combined(with: .opacity))
                 }
             }
+            .sheet(isPresented: $showRemoveSheet) {
+                RemoveDogSheet(dog: dog, onConfirm: removeDog)
+            }
+        }
+    }
+
+    // MARK: - Delete
+
+    private func removeDog() {
+        // Захоплюємо контекст і об'єкт зараз, потім закриваємо editor і виконуємо
+        // видалення після анімації — інакше @Bindable dog інвалідується під
+        // час рендеру закриття і застосунок падає.
+        // ContentView сам покаже онбординг, якщо dogs стане порожнім.
+        let context = modelContext
+        let dogToDelete = dog
+        dismiss()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            context.delete(dogToDelete)
+            try? context.save()
         }
     }
 

@@ -10,17 +10,22 @@ import SwiftUI
 
 struct ContentView: View {
     @AppStorage("onboardingDone") private var onboardingDone = false
+    @Query private var dogs: [Dog]
     @State private var selectedTab: AppTab = .home
+
+    // Показуємо MainTabView лише коли онбординг пройдено ТА є хоча б одна собака.
+    // Якщо юзер видалив останню собаку — автоматично повертаємось в онбординг.
+    private var showMain: Bool { onboardingDone && !dogs.isEmpty }
 
     var body: some View {
         Group {
-            if onboardingDone {
+            if showMain {
                 MainTabView(selectedTab: $selectedTab)
             } else {
                 OnboardingView()
             }
         }
-        .animation(.easeInOut(duration: 0.3), value: onboardingDone)
+        .animation(.easeInOut(duration: 0.3), value: showMain)
         // Слухаємо deep links від App Intents
         .onReceive(NotificationCenter.default.publisher(for: .openAppTab)) { note in
             if let raw = note.userInfo?["tab"] as? String,

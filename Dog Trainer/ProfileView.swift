@@ -75,20 +75,8 @@ struct ProfileView: View {
         .sheet(isPresented: $showAddDog) {
             AddDogSheet()
         }
-        .alert(
-            String(localized: "profile.dog.delete.title"),
-            isPresented: Binding(
-                get: { pendingDelete != nil },
-                set: { if !$0 { pendingDelete = nil } }
-            ),
-            presenting: pendingDelete
-        ) { dog in
-            Button(String(localized: "profile.dog.delete.confirm"), role: .destructive) {
-                delete(dog)
-            }
-            Button(String(localized: "profile.edit.cancel"), role: .cancel) {}
-        } message: { dog in
-            Text(String(localized: "profile.dog.delete.message \(dog.name)"))
+        .sheet(item: $pendingDelete) { dog in
+            RemoveDogSheet(dog: dog, onConfirm: { delete(dog) })
         }
     }
 
