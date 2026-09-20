@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A74DDB072FE098D600154946 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A74DDB062FE098D600154946 /* Localizable.xcstrings */; };
+		A793FE73305E563600717BA8 /* Dog Academy Watch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A793FE53305E563500717BA8 /* Dog Academy Watch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,13 +26,51 @@
 			remoteGlobalIDString = A74DDACD2FE08E4900154946;
 			remoteInfo = "Dog Trainer";
 		};
+		A793FE60305E563600717BA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A74DDAC62FE08E4900154946 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A793FE52305E563500717BA8;
+			remoteInfo = "Dog Academy Watch Watch App";
+		};
+		A793FE6A305E563600717BA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A74DDAC62FE08E4900154946 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A793FE52305E563500717BA8;
+			remoteInfo = "Dog Academy Watch Watch App";
+		};
+		A793FE71305E563600717BA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A74DDAC62FE08E4900154946 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A793FE52305E563500717BA8;
+			remoteInfo = "Dog Academy Watch Watch App";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A793FE74305E563600717BA8 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				A793FE73305E563600717BA8 /* Dog Academy Watch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A74DDACE2FE08E4900154946 /* Dog Trainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dog Trainer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A74DDADB2FE08E4C00154946 /* Dog TrainerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dog TrainerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A74DDAE52FE08E4C00154946 /* Dog TrainerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dog TrainerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A74DDB062FE098D600154946 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		A793FE53305E563500717BA8 /* Dog Academy Watch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dog Academy Watch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A793FE5F305E563600717BA8 /* Dog Academy Watch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dog Academy Watch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A793FE69305E563600717BA8 /* Dog Academy Watch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dog Academy Watch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -48,6 +87,21 @@
 		A74DDAE82FE08E4C00154946 /* Dog TrainerUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Dog TrainerUITests";
+			sourceTree = "<group>";
+		};
+		A793FE54305E563500717BA8 /* Dog Academy Watch Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Dog Academy Watch Watch App";
+			sourceTree = "<group>";
+		};
+		A793FE62305E563600717BA8 /* Dog Academy Watch Watch AppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Dog Academy Watch Watch AppTests";
+			sourceTree = "<group>";
+		};
+		A793FE6C305E563600717BA8 /* Dog Academy Watch Watch AppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Dog Academy Watch Watch AppUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -74,6 +128,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A793FE50305E563500717BA8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A793FE5C305E563600717BA8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A793FE66305E563600717BA8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -84,6 +159,9 @@
 				A74DDAD02FE08E4900154946 /* Dog Trainer */,
 				A74DDADE2FE08E4C00154946 /* Dog TrainerTests */,
 				A74DDAE82FE08E4C00154946 /* Dog TrainerUITests */,
+				A793FE54305E563500717BA8 /* Dog Academy Watch Watch App */,
+				A793FE62305E563600717BA8 /* Dog Academy Watch Watch AppTests */,
+				A793FE6C305E563600717BA8 /* Dog Academy Watch Watch AppUITests */,
 				A74DDACF2FE08E4900154946 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -94,6 +172,9 @@
 				A74DDACE2FE08E4900154946 /* Dog Trainer.app */,
 				A74DDADB2FE08E4C00154946 /* Dog TrainerTests.xctest */,
 				A74DDAE52FE08E4C00154946 /* Dog TrainerUITests.xctest */,
+				A793FE53305E563500717BA8 /* Dog Academy Watch Watch App.app */,
+				A793FE5F305E563600717BA8 /* Dog Academy Watch Watch AppTests.xctest */,
+				A793FE69305E563600717BA8 /* Dog Academy Watch Watch AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,10 +189,12 @@
 				A74DDACA2FE08E4900154946 /* Sources */,
 				A74DDACB2FE08E4900154946 /* Frameworks */,
 				A74DDACC2FE08E4900154946 /* Resources */,
+				A793FE74305E563600717BA8 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A793FE72305E563600717BA8 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				A74DDAD02FE08E4900154946 /* Dog Trainer */,
@@ -169,6 +252,74 @@
 			productReference = A74DDAE52FE08E4C00154946 /* Dog TrainerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		A793FE52305E563500717BA8 /* Dog Academy Watch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A793FE7B305E563600717BA8 /* Build configuration list for PBXNativeTarget "Dog Academy Watch Watch App" */;
+			buildPhases = (
+				A793FE4F305E563500717BA8 /* Sources */,
+				A793FE50305E563500717BA8 /* Frameworks */,
+				A793FE51305E563500717BA8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A793FE54305E563500717BA8 /* Dog Academy Watch Watch App */,
+			);
+			name = "Dog Academy Watch Watch App";
+			packageProductDependencies = (
+			);
+			productName = "Dog Academy Watch Watch App";
+			productReference = A793FE53305E563500717BA8 /* Dog Academy Watch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A793FE5E305E563600717BA8 /* Dog Academy Watch Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A793FE7C305E563600717BA8 /* Build configuration list for PBXNativeTarget "Dog Academy Watch Watch AppTests" */;
+			buildPhases = (
+				A793FE5B305E563600717BA8 /* Sources */,
+				A793FE5C305E563600717BA8 /* Frameworks */,
+				A793FE5D305E563600717BA8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A793FE61305E563600717BA8 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A793FE62305E563600717BA8 /* Dog Academy Watch Watch AppTests */,
+			);
+			name = "Dog Academy Watch Watch AppTests";
+			packageProductDependencies = (
+			);
+			productName = "Dog Academy Watch Watch AppTests";
+			productReference = A793FE5F305E563600717BA8 /* Dog Academy Watch Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A793FE68305E563600717BA8 /* Dog Academy Watch Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A793FE7D305E563600717BA8 /* Build configuration list for PBXNativeTarget "Dog Academy Watch Watch AppUITests" */;
+			buildPhases = (
+				A793FE65305E563600717BA8 /* Sources */,
+				A793FE66305E563600717BA8 /* Frameworks */,
+				A793FE67305E563600717BA8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A793FE6B305E563600717BA8 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A793FE6C305E563600717BA8 /* Dog Academy Watch Watch AppUITests */,
+			);
+			name = "Dog Academy Watch Watch AppUITests";
+			packageProductDependencies = (
+			);
+			productName = "Dog Academy Watch Watch AppUITests";
+			productReference = A793FE69305E563600717BA8 /* Dog Academy Watch Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -190,6 +341,17 @@
 						CreatedOnToolsVersion = 26.5;
 						TestTargetID = A74DDACD2FE08E4900154946;
 					};
+					A793FE52305E563500717BA8 = {
+						CreatedOnToolsVersion = 26.5;
+					};
+					A793FE5E305E563600717BA8 = {
+						CreatedOnToolsVersion = 26.5;
+						TestTargetID = A793FE52305E563500717BA8;
+					};
+					A793FE68305E563600717BA8 = {
+						CreatedOnToolsVersion = 26.5;
+						TestTargetID = A793FE52305E563500717BA8;
+					};
 				};
 			};
 			buildConfigurationList = A74DDAC92FE08E4900154946 /* Build configuration list for PBXProject "Dog Trainer" */;
@@ -209,6 +371,9 @@
 				A74DDACD2FE08E4900154946 /* Dog Trainer */,
 				A74DDADA2FE08E4C00154946 /* Dog TrainerTests */,
 				A74DDAE42FE08E4C00154946 /* Dog TrainerUITests */,
+				A793FE52305E563500717BA8 /* Dog Academy Watch Watch App */,
+				A793FE5E305E563600717BA8 /* Dog Academy Watch Watch AppTests */,
+				A793FE68305E563600717BA8 /* Dog Academy Watch Watch AppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -230,6 +395,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A74DDAE32FE08E4C00154946 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A793FE51305E563500717BA8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A793FE5D305E563600717BA8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A793FE67305E563600717BA8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -260,6 +446,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A793FE4F305E563500717BA8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A793FE5B305E563600717BA8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A793FE65305E563600717BA8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -272,6 +479,21 @@
 			isa = PBXTargetDependency;
 			target = A74DDACD2FE08E4900154946 /* Dog Trainer */;
 			targetProxy = A74DDAE62FE08E4C00154946 /* PBXContainerItemProxy */;
+		};
+		A793FE61305E563600717BA8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A793FE52305E563500717BA8 /* Dog Academy Watch Watch App */;
+			targetProxy = A793FE60305E563600717BA8 /* PBXContainerItemProxy */;
+		};
+		A793FE6B305E563600717BA8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A793FE52305E563500717BA8 /* Dog Academy Watch Watch App */;
+			targetProxy = A793FE6A305E563600717BA8 /* PBXContainerItemProxy */;
+		};
+		A793FE72305E563600717BA8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A793FE52305E563500717BA8 /* Dog Academy Watch Watch App */;
+			targetProxy = A793FE71305E563600717BA8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -559,6 +781,162 @@
 			};
 			name = Release;
 		};
+		A793FE75305E563600717BA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2T275HN47B;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Dog Academy Watch";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.lelia.Dog-Academy";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lelia.Dog-Academy.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.5;
+			};
+			name = Debug;
+		};
+		A793FE76305E563600717BA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2T275HN47B;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Dog Academy Watch";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.lelia.Dog-Academy";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lelia.Dog-Academy.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.5;
+			};
+			name = Release;
+		};
+		A793FE77305E563600717BA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2T275HN47B;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lelia.Dog-Academy-Watch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dog Academy Watch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Dog Academy Watch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 26.5;
+			};
+			name = Debug;
+		};
+		A793FE78305E563600717BA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2T275HN47B;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lelia.Dog-Academy-Watch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dog Academy Watch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Dog Academy Watch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 26.5;
+			};
+			name = Release;
+		};
+		A793FE79305E563600717BA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2T275HN47B;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lelia.Dog-Academy-Watch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "Dog Academy Watch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 26.5;
+			};
+			name = Debug;
+		};
+		A793FE7A305E563600717BA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2T275HN47B;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lelia.Dog-Academy-Watch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "Dog Academy Watch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 26.5;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -594,6 +972,33 @@
 			buildConfigurations = (
 				A74DDAF62FE08E4C00154946 /* Debug */,
 				A74DDAF72FE08E4C00154946 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A793FE7B305E563600717BA8 /* Build configuration list for PBXNativeTarget "Dog Academy Watch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A793FE75305E563600717BA8 /* Debug */,
+				A793FE76305E563600717BA8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A793FE7C305E563600717BA8 /* Build configuration list for PBXNativeTarget "Dog Academy Watch Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A793FE77305E563600717BA8 /* Debug */,
+				A793FE78305E563600717BA8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A793FE7D305E563600717BA8 /* Build configuration list for PBXNativeTarget "Dog Academy Watch Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A793FE79305E563600717BA8 /* Debug */,
+				A793FE7A305E563600717BA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
